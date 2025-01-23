@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="light-style layout-navbar-fixed  layout-menu-fixed    layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="" data-base-url="" data-framework="django" data-template="vertical-menu--theme-default-light">
+   <head>
+      <title>Account settings - Account | Vuexy - Django Admin Template</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+      <meta name="description" content="Vuexy is a modern, clean and fully responsive admin template built with Bootstrap 5, Django, HTML, CSS, jQuery, and JavaScript. It has a huge collection of reusable UI components and integrated with the latest jQuery plugins. It can be used for all types of web applications like custom admin panel, project management system, admin dashboard, Backend application or CRM." />
+      <meta name="keywords" content="django, django admin, dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
+      <!-- Canonical SEO -->
+      <link rel="canonical" href="https://1.envato.market/vuexy_admin">
+      <!-- Favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="{% static 'portal/img/favicon/favicon.ico" />
+      <!-- Include the styles partial -->
+      <!--Fonts-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap" rel="stylesheet">
+      <!-- Icons -->
+      <link rel="stylesheet" href="{% static 'portal/vendor/fonts/tabler-icons.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/fonts/fontawesome.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/fonts/flag-icons.css' %}" />
+      <!--Core CSS -->
+      <link rel="stylesheet" href="{% static 'portal/vendor/css/rtl/core.css' %}" class="template-customizer-core-css" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/css/rtl/theme-default.css' %}" class="template-customizer-theme-css" />
+      <link rel="stylesheet" href="{% static 'portal/css/demo.css' %}" />
+      <!--Vendor CSS-->
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/typeahead-js/typeahead.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/node-waves/node-waves.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/select2/select2.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/%40form-validation/form-validation.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/animate-css/animate.css' %}" />
+      <link rel="stylesheet" href="{% static 'portal/vendor/libs/sweetalert2/sweetalert2.css' %}" />
+      <!--Page CSS-->
+      <!-- Include the scripts partial (required ) -->
+      <!-- Helpers -->
+      <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js' %} in the <head> section -->
+      <script src="{% static 'portal/vendor/js/helpers.js' %}"></script>
+      <!--? Template customizer: To hide customizer set display_customizer value false in config.js' %}.  -->
+      {% comment %} <script src="{% static 'portal/vendor/js/template-customizer.js' %}"></script> {% endcomment %}
+      <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+      <script src="{% static 'portal/js/config.js' %}"></script>
+      <!-- beautify ignore:start -->
+      <script>
+         if (typeof TemplateCustomizer !== 'undefined') {
+           window.templateCustomizer = new TemplateCustomizer({
+             cssPath: '',
+             themesPath: '',
+             defaultStyle: "light", // Required as system style can't decided without JS
+             defaultTextDir: 'ltr',
+             defaultShowDropdownOnHover : true,
+             lang: 'en',
+             pathResolver: function(path) {
+               var resolvedPaths = {
+                 // Core stylesheets
+                 'core.css': "{% static 'portal/vendor/css/rtl/core.css' %}",
+                 'core-dark.css': "{% static 'portal/vendor/css/rtl/core-dark.css' %}",
+         
+                 'theme-default.css': "{% static 'portal/vendor/css/rtl/theme-default.css' %}",
+                 'theme-default-dark.css': "{% static 'portal/vendor/css/rtl/theme-default-dark.css' %}",
+         
+                 'theme-bordered.css': "{% static 'portal/vendor/css/rtl/theme-bordered.css' %}",
+                 'theme-bordered-dark.css': "{% static 'portal/vendor/css/rtl/theme-bordered-dark.css' %}",
+         
+                 'theme-semi-dark.css': "{% static 'portal/vendor/css/rtl/theme-semi-dark.css' %}",
+                 'theme-semi-dark-dark.css': "{% static 'portal/vendor/css/rtl/theme-semi-dark-dark.css' %}"
+         
+               }
+               return resolvedPaths[path] || path;
+             },
+             controls: ['rtl', 'style', 'headerType', 'contentLayout', 'layoutCollapsed', 'showDropdownOnHover', 'layoutNavbarOptions', 'themes'],
+           });
+         }
+         
+      </script>
+   </head>
+   <body>
+      <!-- beautify ignore:end -->
+      <!-- Layout wrapper: Start -->
+      <div class="layout-wrapper layout-content-navbar ">
+         <div class="layout-container">
+            <!-- Menu: Start -->
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+               <!-- ! Hide app brand if navbar-full -->
+               <div class="app-brand demo">
+                  <a href="/" class="app-brand-link">
+                     <span class="app-brand-logo demo">
+                        <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z" fill="#7367F0" />
+                           <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd" d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z" fill="#161616" />
+                           <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd" d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z" fill="#161616" />
+                           <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z" fill="#7367F0" />
+                        </svg>
+                     </span>
+                     <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
+                  </a>
+                  <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                  <i class="ti menu-toggle-icon d-none d-xl-block align-middle"></i>
+                  <i class="ti ti-x d-block d-xl-none ti-md align-middle"></i>
+                  </a>
+               </div>
+               <div class="menu-inner-shadow"></div>
+               <ul class="menu-inner py-1">
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                        <div>Dashboards</div>
+                        <div class="badge bg-danger rounded-pill ms-auto">5</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Analytics</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/dashboard/crm/" class="menu-link" >
+                              <i class=""></i>
+                              <div>CRM</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/ecommerce/dashboard" class="menu-link" >
+                              <i class=""></i>
+                              <div>eCommerce</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/logistics/dashboard" class="menu-link" >
+                              <i class=""></i>
+                              <div>Logistics</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/academy/dashboard" class="menu-link" >
+                              <i class=""></i>
+                              <div>Academy</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
+                        <div>Layouts</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/layouts/collapsed_menu/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Collapsed menu</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/content_navbar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Content navbar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/content_nav_sidebar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Content nav + Sidebar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/horizontal/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Horizontal</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/without_menu/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Without menu</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/without_navbar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Without navbar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/fluid/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Fluid</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/container/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Container</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/layouts/blank/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Blank</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-files"></i>
+                        <div>Front Pages</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/front/landing/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Landing</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/front/pricing/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Pricing</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/front/payment/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Payments</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/front/checkout/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Checkout</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/front/help_center/" class="menu-link" target="_blank" >
+                              <i class=""></i>
+                              <div>Help Center</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/transactions/list/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-database"></i>
+                        <div>Transactions (CRUD)</div>
+                     </a>
+                  </li>
+                  <li class="menu-header small text-uppercase">
+                     <span class="menu-header-text">Apps &amp; Pages</span>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/app/email/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-mail"></i>
+                        <div>Email</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/app/chat/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-messages"></i>
+                        <div>Chat</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/app/calendar/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-calendar"></i>
+                        <div>Calendar</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/app/kanban/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
+                        <div>Kanban</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-shopping-cart"></i>
+                        <div>eCommerce</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/ecommerce/dashboard/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Dashboard</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Products</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/product/list/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Product List</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/product/add/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Add Product</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/product/category/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Category List</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Order</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/order/list/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Order List</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/order/details/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Order Details</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Customer</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/customer_all/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>All Customers</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                    <i class=""></i>
+                                    <div>Customer Details</div>
+                                 </a>
+                                 <ul class="menu-sub">
+                                    <li class="menu-item ">
+                                       <a href="/app/ecommerce/customer/details/overview/" class="menu-link" >
+                                          <i class=""></i>
+                                          <div>Overview</div>
+                                       </a>
+                                    </li>
+                                    <li class="menu-item ">
+                                       <a href="/app/ecommerce/customer/details/security/" class="menu-link" >
+                                          <i class=""></i>
+                                          <div>Security</div>
+                                       </a>
+                                    </li>
+                                    <li class="menu-item ">
+                                       <a href="/app/ecommerce/customer/details/billing/" class="menu-link" >
+                                          <i class=""></i>
+                                          <div>Address &amp; Billing</div>
+                                       </a>
+                                    </li>
+                                    <li class="menu-item ">
+                                       <a href="/app/ecommerce/customer/details/notifications/" class="menu-link" >
+                                          <i class=""></i>
+                                          <div>Notifications</div>
+                                       </a>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/ecommerce/manage_reviews/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Manage Reviews</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/ecommerce/referrals/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Referrals</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Settings</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/details/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Store details</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/payments/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Payments</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/checkout/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Checkout</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/shipping/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Shipping &amp; Delivery</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/locations/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Locations</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/ecommerce/settings/notifications/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Notifications</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-book"></i>
+                        <div>Academy</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/academy/dashboard/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Dashboard</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/academy/course/" class="menu-link" >
+                              <i class=""></i>
+                              <div>My Course</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/academy/course_details/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Course Details</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-truck"></i>
+                        <div>Logistics</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/logistics/dashboard/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Dashboard</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/logistics/fleet/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Fleet</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-file-dollar"></i>
+                        <div>Invoice</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/invoice/list/" class="menu-link" >
+                              <i class=""></i>
+                              <div>List</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/invoice/preview/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Preview</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/invoice/edit/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Edit</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/invoice/add/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Add</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-users"></i>
+                        <div>Users</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/user/list/" class="menu-link" >
+                              <i class=""></i>
+                              <div>List</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>View</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/app/user/view/account/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Account</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/user/view/security/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Security</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/user/view/billing/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Billing &amp; Plans</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/user/view/notifications/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Notifications</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/app/user/view/connections/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Connections</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-settings"></i>
+                        <div>Roles &amp; Permissions</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/app/access/roles/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Roles</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/app/access/permission/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Permission</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item active open">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-file"></i>
+                        <div>Pages</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>User Profile</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/pages/profile/user/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Profile</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/profile/teams/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Teams</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/profile/projects/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Projects</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/profile/connections/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Connections</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item active open">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Account Settings</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item active">
+                                 <a href="/pages/account_settings/account/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Account</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/account_settings/security/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Security</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/account_settings/billing/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Billing &amp; Plans</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/account_settings/notifications/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Notifications</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/account_settings/connections/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Connections</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/pages/faq/" class="menu-link" >
+                              <i class=""></i>
+                              <div>FAQ</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/pages/pricing/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Pricing</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Misc</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/pages/misc/error/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Error</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/misc/under_maintenance/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Under Maintenance</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/misc/comingsoon/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Coming Soon</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/pages/misc/not_authorized/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Not Authorized</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-lock"></i>
+                        <div>Authentications</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Login</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/login/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/login/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Register</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/register/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/register/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/register/multisteps/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Multi-steps</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Verify Email</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/verify_email/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/verify_email/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Reset Password</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/reset_password/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/reset_password/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Forgot Password</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/forgot_password/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/forgot_password/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Two Steps</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/auth/two_steps/basic/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/auth/two_steps/cover/" class="menu-link" target="_blank" >
+                                    <i class=""></i>
+                                    <div>Cover</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-forms"></i>
+                        <div>Wizard Examples</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/wizard_ex/checkout/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Checkout</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/wizard_ex/property_listing/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Property Listing</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/wizard_ex/create_deal/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Create Deal</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/modal_examples/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-square"></i>
+                        <div>Modal Examples</div>
+                     </a>
+                  </li>
+                  <li class="menu-header small text-uppercase">
+                     <span class="menu-header-text">Components</span>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-id"></i>
+                        <div>Cards</div>
+                        <div class="badge bg-primary rounded-pill ms-auto">5</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/cards/basic/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Basic</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/cards/advance/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Advance</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/cards/statistics/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Statistics</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/cards/analytics/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Analytics</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/cards/actions/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Actions</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-color-swatch"></i>
+                        <div>User interface</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/ui/accordion/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Accordion</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/alerts/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Alerts</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/badges/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Badges</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/buttons/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Buttons</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/carousel/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Carousel</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/collapse/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Collapse</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/dropdowns/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Dropdowns</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/footer/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Footer</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/list_groups/" class="menu-link" >
+                              <i class=""></i>
+                              <div>List Groups</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/modals/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Modals</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/navbar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Navbar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/offcanvas/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Offcanvas</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/pagination_breadcrumbs/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Pagination &amp; Breadcrumbs</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/progress/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Progress</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/spinners/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Spinners</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/tabs_pills/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Tabs &amp; Pills</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/toasts/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Toasts</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/tooltips_popovers/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Tooltips &amp; Popovers</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/ui/typography/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Typography</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-components"></i>
+                        <div>Extended UI</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/extended_ui/avatar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Avatar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/blockui/" class="menu-link" >
+                              <i class=""></i>
+                              <div>BlockUI</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/drag_and_drop/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Drag &amp; Drop</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/media_player/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Media Player</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/perfect_scrollbar/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Perfect Scrollbar</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/star_ratings/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Star Ratings</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/sweetalert2/" class="menu-link" >
+                              <i class=""></i>
+                              <div>SweetAlert2</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/text_divider/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Text Divider</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i class=""></i>
+                              <div>Timeline</div>
+                           </a>
+                           <ul class="menu-sub">
+                              <li class="menu-item ">
+                                 <a href="/extended_ui/timeline_basic/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Basic</div>
+                                 </a>
+                              </li>
+                              <li class="menu-item ">
+                                 <a href="/extended_ui/timeline_fullscreen/" class="menu-link" >
+                                    <i class=""></i>
+                                    <div>Fullscreen</div>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/tour/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Tour</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/treeview/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Treeview</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/extended_ui/misc/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Miscellaneous</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-brand-tabler"></i>
+                        <div>Icons</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/icons/tabler/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Tabler</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/icons/font_awesome/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Fontawesome</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-header small text-uppercase">
+                     <span class="menu-header-text">Forms &amp; Tables</span>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-toggle-left"></i>
+                        <div>Form Elements</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/forms/basic_inputs/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Basic Inputs</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/input_groups/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Input groups</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/custom_options/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Custom Options</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/editors/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Editors</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/file_upload/" class="menu-link" >
+                              <i class=""></i>
+                              <div>File Upload</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/pickers/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Pickers</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/selects/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Select &amp; Tags</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/sliders/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Sliders</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/switches/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Switches</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/forms/extras/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Extras</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-layout-navbar"></i>
+                        <div>Form Layouts</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/form/layouts_vertical/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Vertical Form</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/form/layouts_horizontal/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Horizontal Form</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/form/layouts_sticky/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Sticky Actions</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
+                        <div>Form Wizard</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/form/wizard_numbered/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Numbered</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/form/wizard_icons/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Icons</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/form/validation/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                        <div>Form Validation</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/tables/basic/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-table"></i>
+                        <div>Tables</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-layout-grid"></i>
+                        <div>Datatables</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/tables/datatables_basic/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Basic</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/tables/datatables_advanced/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Advanced</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/tables/datatables_extensions/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Extensions</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-header small text-uppercase">
+                     <span class="menu-header-text">Charts &amp; Maps</span>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-chart-pie"></i>
+                        <div>Charts</div>
+                     </a>
+                     <ul class="menu-sub">
+                        <li class="menu-item ">
+                           <a href="/charts/apex/" class="menu-link" >
+                              <i class=""></i>
+                              <div>Apex Charts</div>
+                           </a>
+                        </li>
+                        <li class="menu-item ">
+                           <a href="/charts/chartjs/" class="menu-link" >
+                              <i class=""></i>
+                              <div>ChartJS</div>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="/maps/leaflet/" class="menu-link" >
+                        <i class="menu-icon tf-icons ti ti-map"></i>
+                        <div>Leaflet Maps</div>
+                     </a>
+                  </li>
+                  <li class="menu-header small text-uppercase">
+                     <span class="menu-header-text">Misc</span>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="https://pixinvent.ticksy.com/" class="menu-link" target="_blank" >
+                        <i class="menu-icon tf-icons ti ti-lifebuoy"></i>
+                        <div>Support</div>
+                     </a>
+                  </li>
+                  <li class="menu-item ">
+                     <a href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/django-introduction.html" class="menu-link" target="_blank" >
+                        <i class="menu-icon tf-icons ti ti-file-description"></i>
+                        <div>Documentation</div>
+                     </a>
+                  </li>
+               </ul>
+            </aside>
+            <!-- Menu: End -->
+            <!-- Layout page: Start -->
+            <div class="layout-page">
+               <!-- Navbar: Start -->
+               <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+                  <!--  Brand demo (display only for navbar-full and hide on below xl) -->
+                  <!-- ! Not required for layout-without-menu -->
+                  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0  d-xl-none">
+                     <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                     <i class="ti ti-menu-2 ti-md"></i>
+                     </a>
+                  </div>
+                  <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                     <!-- Search -->
+                     <div class="navbar-nav align-items-center">
+                        <div class="nav-item navbar-search-wrapper mb-0">
+                           <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                           <i class="ti ti-search ti-md me-2 me-lg-4 ti-lg"></i>
+                           <span class="d-none d-md-inline-block text-muted fw-normal">Search (Ctrl+/)</span>
+                           </a>
+                        </div>
+                     </div>
+                     <!-- /Search -->
+                     <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <!--/ Language -->
+                        <!-- Language -->
+                        <li class="nav-item dropdown-language dropdown">
+                           <a class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                           <i class='ti ti-language rounded-circle ti-md'></i>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                              <li>
+                                 <a class="dropdown-item active" href="http://127.0.0.1:8000/pages/account_settings/account/" data-language="en" data-text-direction="ltr">
+                                 <span class="align-middle">English</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item " href="http://127.0.0.1:8000/pages/account_settings/account/" data-language="fr" data-text-direction="ltr">
+                                 <span class="align-middle">Français</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item " href="http://127.0.0.1:8000/pages/account_settings/account/" data-language="ar" data-text-direction="rtl">
+                                 <span class="align-middle">عربي</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item " href="http://127.0.0.1:8000/pages/account_settings/account/" data-language="de" data-text-direction="ltr">
+                                 <span class="align-middle">Deutsch</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <!--/ Language -->
+                        <!-- Style Switcher -->
+                        <li class="nav-item dropdown-style-switcher dropdown">
+                           <a class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                           <i class='ti ti-md'></i>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                              <li>
+                                 <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                                 <span class="align-middle"><i class='ti ti-sun ti-md me-3'></i>Light</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                                 <span class="align-middle"><i class="ti ti-moon-stars ti-md me-3"></i>Dark</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                 <span class="align-middle"><i class="ti ti-device-desktop-analytics ti-md me-3"></i>System</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </li>
+                        <!--/ Style Switcher -->
+                        <!-- Quick links  -->
+                        <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown">
+                           <a class="nav-link btn btn-text-secondary btn-icon rounded-pill btn-icon dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                           <i class='ti ti-layout-grid-add ti-md'></i>
+                           </a>
+                           <div class="dropdown-menu dropdown-menu-end p-0">
+                              <div class="dropdown-menu-header border-bottom">
+                                 <div class="dropdown-header d-flex align-items-center py-3">
+                                    <h6 class="mb-0 me-auto">Shortcuts</h6>
+                                    <a href="javascript:void(0)" class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="ti ti-plus text-heading"></i></a>
+                                 </div>
+                              </div>
+                              <div class="dropdown-shortcuts-list scrollable-container">
+                                 <div class="row row-bordered overflow-visible g-0">
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-calendar ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/app/calendar/" class="stretched-link">Calendar</a>
+                                       <small>Appointments</small>
+                                    </div>
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-file-dollar ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/app/invoice/list/" class="stretched-link">Invoice App</a>
+                                       <small>Manage Accounts</small>
+                                    </div>
+                                 </div>
+                                 <div class="row row-bordered overflow-visible g-0">
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-user ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/app/user/list/" class="stretched-link">User App</a>
+                                       <small>Manage Users</small>
+                                    </div>
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-users ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/app/access/roles/" class="stretched-link">Role Management</a>
+                                       <small>Permission</small>
+                                    </div>
+                                 </div>
+                                 <div class="row row-bordered overflow-visible g-0">
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-device-desktop-analytics ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/" class="stretched-link">Dashboard</a>
+                                       <small>User Dashboard</small>
+                                    </div>
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-settings ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/pages/account_settings/security/" class="stretched-link">Setting</a>
+                                       <small>Account Settings</small>
+                                    </div>
+                                 </div>
+                                 <div class="row row-bordered overflow-visible g-0">
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-help ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/pages/faq/" class="stretched-link">FAQs</a>
+                                       <small>FAQs & Articles</small>
+                                    </div>
+                                    <div class="dropdown-shortcuts-item col">
+                                       <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                       <i class="ti ti-square ti-26px text-heading"></i>
+                                       </span>
+                                       <a href="/modal_examples/" class="stretched-link">Modals</a>
+                                       <small>Useful Popups</small>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <!-- Quick links -->
+                        <!-- Notification -->
+                        <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
+                           <a class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                           <span class="position-relative">
+                           <i class="ti ti-bell ti-md"></i>
+                           <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
+                           </span>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end p-0">
+                              <li class="dropdown-menu-header border-bottom">
+                                 <div class="dropdown-header d-flex align-items-center py-3">
+                                    <h6 class="mb-0 me-auto">Notification</h6>
+                                    <div class="d-flex align-items-center h6 mb-0">
+                                       <span class="badge bg-label-primary me-2">8 New</span>
+                                       <a href="javascript:void(0)" class="btn btn-text-secondary rounded-pill btn-icon dropdown-notifications-all" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="ti ti-mail-opened text-heading"></i></a>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="dropdown-notifications-list scrollable-container">
+                                 <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <img src="{% static 'portal/img/avatars/1.png' %}" alt class="rounded-circle">
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="small mb-1">Congratulation Lettie 🎉</h6>
+                                             <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
+                                             <small class="text-muted">1h ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">Charles Franklin</h6>
+                                             <small class="mb-1 d-block text-body">Accepted your connection</small>
+                                             <small class="text-muted">12hr ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <img src="{% static 'portal/img/avatars/2.png' %}" alt class="rounded-circle">
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">New Message ✉️</h6>
+                                             <small class="mb-1 d-block text-body">You have new message from Natalie</small>
+                                             <small class="text-muted">1h ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-shopping-cart"></i></span>
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">Whoo! You have new order 🛒 </h6>
+                                             <small class="mb-1 d-block text-body">ACME Inc. made new order $1,154</small>
+                                             <small class="text-muted">1 day ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <img src="{% static 'portal/img/avatars/9.png' %}" alt class="rounded-circle">
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">Application has been approved 🚀 </h6>
+                                             <small class="mb-1 d-block text-body">Your ABC project application has been approved.</small>
+                                             <small class="text-muted">2 days ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-chart-pie"></i></span>
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">Monthly report is generated</h6>
+                                             <small class="mb-1 d-block text-body">July monthly financial report is generated </small>
+                                             <small class="text-muted">3 days ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <img src="{% static 'portal/img/avatars/5.png' %}" alt class="rounded-circle">
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">Send connection request</h6>
+                                             <small class="mb-1 d-block text-body">Peter sent you connection request</small>
+                                             <small class="text-muted">4 days ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <img src="{% static 'portal/img/avatars/6.png' %}" alt class="rounded-circle">
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">New message from Jane</h6>
+                                             <small class="mb-1 d-block text-body">Your have new message from Jane</small>
+                                             <small class="text-muted">5 days ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                       <div class="d-flex">
+                                          <div class="flex-shrink-0 me-3">
+                                             <div class="avatar">
+                                                <span class="avatar-initial rounded-circle bg-label-warning"><i class="ti ti-alert-triangle"></i></span>
+                                             </div>
+                                          </div>
+                                          <div class="flex-grow-1">
+                                             <h6 class="mb-1 small">CPU is running high</h6>
+                                             <small class="mb-1 d-block text-body">CPU Utilization Percent is currently at 88.63%,</small>
+                                             <small class="text-muted">5 days ago</small>
+                                          </div>
+                                          <div class="flex-shrink-0 dropdown-notifications-actions">
+                                             <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                          </div>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li class="border-top">
+                                 <div class="d-grid p-4">
+                                    <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
+                                    <small class="align-middle">View all notifications</small>
+                                    </a>
+                                 </div>
+                              </li>
+                           </ul>
+                        </li>
+                        <!--/ Notification -->
+                        <!-- User -->
+                        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                           <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                              <div class="avatar avatar-online">
+                                 <img src="{% static 'portal/img/avatars/1.png' %}" alt class="h-auto rounded-circle">
+                              </div>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                              <li>
+                                 <a class="dropdown-item mt-0" href="/pages/account_settings/account/">
+                                    <div class="d-flex align-items-center">
+                                       <div class="flex-shrink-0 me-2">
+                                          <div class="avatar avatar-online">
+                                             <img src="{% static 'portal/img/avatars/1.png' %}" alt class="w-px-40 h-auto rounded-circle">
+                                          </div>
+                                       </div>
+                                       <div class="flex-grow-1">
+                                          <h6 class="mb-0">admin</h6>
+                                          <small class="text-muted">admin</small>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <li>
+                                 <div class="dropdown-divider my-1 mx-n2"></div>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="/pages/profile/user/">
+                                 <i class="ti ti-user me-3 ti-md"></i><span class="align-middle">My Profile</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="/pages/account_settings/account/">
+                                 <i class="ti ti-settings me-3 ti-md"></i><span class="align-middle">Settings</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="/pages/account_settings/billing/">
+                                 <span class="d-flex align-items-center align-middle">
+                                 <i class="flex-shrink-0 ti ti-file-dollar me-3 ti-md"></i><span class="flex-grow-1 align-middle">Billing</span>
+                                 <span class="flex-shrink-0 badge bg-danger d-flex align-items-center justify-content-center">4</span>
+                                 </span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <div class="dropdown-divider my-1 mx-n2"></div>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="/pages/faq/">
+                                 <i class="ti ti-currency-dollar me-3 ti-md"></i><span class="align-middle">Pricing</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item" href="/pages/pricing/">
+                                 <i class="ti ti-question-mark me-3 ti-md"></i><span class="align-middle">FAQ</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <div class="dropdown-divider"></div>
+                              </li>
+                              <li>
+                                 <span class="dropdown-item d-flex justify-content-between align-content-center">
+                                 <span>
+                                 <i class='ti ti-user-circle me-2 ti-md'></i>
+                                 <span class="align-middle">Verified</span>
+                                 </span>
+                                 <span class="text-success"><i class='ti ti-circle-check ti-md'></i></span>
+                                 </span>
+                              </li>
+                              <li class="mt-1">
+                                 <form action="/logout/" method="post">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="chfBLHWuFHBICCBA700spqdS39o81JuuFYxfjssxWkwBZuQFKPoPwulBxa5vnwJS">
+                                    <button type="submit" class="btn btn-sm btn-danger d-flex w-100">
+                                    <span class="align-middle">Log Out</span>
+                                    <i class="ti ti-logout ms-2 ti-14px"></i>
+                                    </button>
+                                 </form>
+                              </li>
+                           </ul>
+                        </li>
+                        <!--/ User -->
+                     </ul>
+                  </div>
+                  <!-- Search Small Screens -->
+                  <div class="navbar-search-wrapper search-input-wrapper  d-none">
+                     <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
+                     <i class="ti ti-x search-toggler cursor-pointer"></i>
+                  </div>
+               </nav>
+               <!-- Navbar: End -->
+               <!-- Content wrapper: Start -->
+               <div class="content-wrapper">
+                  <!-- Content: Start -->
+                  <div class="container-xxl flex-grow-1 container-p-y">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="nav-align-top">
+                              <ul class="nav nav-pills flex-column flex-md-row mb-6 gap-2 gap-lg-0">
+                                 <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="ti-sm ti ti-users me-1_5"></i> Account</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="/pages/account_settings/security/"><i class="ti-sm ti ti-lock me-1_5"></i> Security</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="/pages/account_settings/billing/"><i class="ti-sm ti ti-bookmark me-1_5"></i> Billing & Plans</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="/pages/account_settings/notifications/"><i class="ti-sm ti ti-bell me-1_5"></i> Notifications</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="/pages/account_settings/connections/"><i class="ti-sm ti ti-link me-1_5"></i> Connections</a></li>
+                              </ul>
+                           </div>
+                           <div class="card mb-6">
+                              <!-- Account -->
+                              <div class="card-body">
+                                 <div class="d-flex align-items-start align-items-sm-center gap-6">
+                                    <img src="{% static 'portal/img/avatars/1.png' %}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+                                    <div class="button-wrapper">
+                                       <label for="upload" class="btn btn-primary me-3 mb-4" tabindex="0">
+                                       <span class="d-none d-sm-block">Upload new photo</span>
+                                       <i class="ti ti-upload d-block d-sm-none"></i>
+                                       <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
+                                       </label>
+                                       <button type="button" class="btn btn-label-secondary account-image-reset mb-4">
+                                       <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                       <span class="d-none d-sm-block">Reset</span>
+                                       </button>
+                                       <div>Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-body pt-4">
+                                 <form id="formAccountSettings" method="POST" onsubmit="return false">
+                                    <div class="row">
+                                       <div class="mb-4 col-md-6">
+                                          <label for="firstName" class="form-label">First Name</label>
+                                          <input class="form-control" type="text" id="firstName" name="firstName" value="admin" autofocus />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="lastName" class="form-label">Last Name</label>
+                                          <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="email" class="form-label">E-mail</label>
+                                          <input class="form-control" type="text" id="email" name="email" value="admin@demo.com" placeholder="john.doe@example.com" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="organization" class="form-label">Organization</label>
+                                          <input type="text" class="form-control" id="organization" name="organization" value="PixInvent" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label class="form-label" for="phoneNumber">Phone Number</label>
+                                          <div class="input-group input-group-merge">
+                                             <span class="input-group-text">US (+1)</span>
+                                             <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="202 555 0111" />
+                                          </div>
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="address" class="form-label">Address</label>
+                                          <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="state" class="form-label">State</label>
+                                          <input class="form-control" type="text" id="state" name="state" placeholder="California" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="zipCode" class="form-label">Zip Code</label>
+                                          <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="231465" maxlength="6" />
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label class="form-label" for="country">Country</label>
+                                          <select id="country" class="select2 form-select">
+                                             <option value="">Select</option>
+                                             <option value="Australia">Australia</option>
+                                             <option value="Bangladesh">Bangladesh</option>
+                                             <option value="Belarus">Belarus</option>
+                                             <option value="Brazil">Brazil</option>
+                                             <option value="Canada">Canada</option>
+                                             <option value="China">China</option>
+                                             <option value="France">France</option>
+                                             <option value="Germany">Germany</option>
+                                             <option value="India">India</option>
+                                             <option value="Indonesia">Indonesia</option>
+                                             <option value="Israel">Israel</option>
+                                             <option value="Italy">Italy</option>
+                                             <option value="Japan">Japan</option>
+                                             <option value="Korea">Korea, Republic of</option>
+                                             <option value="Mexico">Mexico</option>
+                                             <option value="Philippines">Philippines</option>
+                                             <option value="Russia">Russian Federation</option>
+                                             <option value="South Africa">South Africa</option>
+                                             <option value="Thailand">Thailand</option>
+                                             <option value="Turkey">Turkey</option>
+                                             <option value="Ukraine">Ukraine</option>
+                                             <option value="United Arab Emirates">United Arab Emirates</option>
+                                             <option value="United Kingdom">United Kingdom</option>
+                                             <option value="United States">United States</option>
+                                          </select>
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="language" class="form-label">Language</label>
+                                          <select id="language" class="select2 form-select">
+                                             <option value="">Select Language</option>
+                                             <option value="en">English</option>
+                                             <option value="fr">French</option>
+                                             <option value="de">German</option>
+                                             <option value="pt">Portuguese</option>
+                                          </select>
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="timeZones" class="form-label">Timezone</label>
+                                          <select id="timeZones" class="select2 form-select">
+                                             <option value="">Select Timezone</option>
+                                             <option value="-12">(GMT-12:00) International Date Line West</option>
+                                             <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
+                                             <option value="-10">(GMT-10:00) Hawaii</option>
+                                             <option value="-9">(GMT-09:00) Alaska</option>
+                                             <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
+                                             <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
+                                             <option value="-7">(GMT-07:00) Arizona</option>
+                                             <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+                                             <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
+                                             <option value="-6">(GMT-06:00) Central America</option>
+                                             <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
+                                             <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+                                             <option value="-6">(GMT-06:00) Saskatchewan</option>
+                                             <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+                                             <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
+                                             <option value="-5">(GMT-05:00) Indiana (East)</option>
+                                             <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
+                                             <option value="-4">(GMT-04:00) Caracas, La Paz</option>
+                                          </select>
+                                       </div>
+                                       <div class="mb-4 col-md-6">
+                                          <label for="currency" class="form-label">Currency</label>
+                                          <select id="currency" class="select2 form-select">
+                                             <option value="">Select Currency</option>
+                                             <option value="usd">USD</option>
+                                             <option value="euro">Euro</option>
+                                             <option value="pound">Pound</option>
+                                             <option value="bitcoin">Bitcoin</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="mt-2">
+                                       <button type="submit" class="btn btn-primary me-3">Save changes</button>
+                                       <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                                    </div>
+                                 </form>
+                              </div>
+                              <!-- /Account -->
+                           </div>
+                           <div class="card">
+                              <h5 class="card-header">Delete Account</h5>
+                              <div class="card-body">
+                                 <div class="mb-6 col-12 mb-0">
+                                    <div class="alert alert-warning">
+                                       <h5 class="alert-heading mb-1">Are you sure you want to delete your account?</h5>
+                                       <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+                                    </div>
+                                 </div>
+                                 <form id="formAccountDeactivation" onsubmit="return false">
+                                    <div class="form-check my-8">
+                                       <input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
+                                       <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger deactivate-account" disabled>Deactivate Account</button>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- / Content: End -->
+                  <!-- Footer: Start -->
+                  <!-- Footer -->
+                  <footer class="content-footer footer bg-footer-theme">
+                     <div class="container-xxl">
+                        <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                           <div class="text-body">
+                              © <script>
+                                 document.write(new Date().getFullYear())
+                                 
+                              </script>, made with ❤️ by <a href="https://pixinvent.com/" target="_blank" class="footer-link">PixInvent</a>
+                           </div>
+                           <div class="d-none d-lg-inline-block">
+                              <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+                              <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+                              <a href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/django-introduction.html" target="_blank" class="footer-link me-4">Documentation</a>
+                              <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+                           </div>
+                        </div>
+                     </div>
+                  </footer>
+                  <!-- / Footer -->
+                  <!-- Footer: End -->
+                  <div class="content-backdrop fade"></div>
+               </div>
+               <!--/ Content wrapper: End -->
+            </div>
+            <!-- / Layout page: End -->
+         </div>
+         <!-- Overlay -->
+         <div class="layout-overlay layout-menu-toggle"></div>
+         <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+         <div class="drag-target"></div>
+      </div>
+      <!-- Layout wrapper: End -->
+      <!--Core Javascript-->
+      <script src="{% static 'portal/vendor/libs/jquery/jquery.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/popper/popper.js' %}"></script>
+      <script src="{% static 'portal/vendor/js/bootstrap.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/node-waves/node-waves.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/hammer/hammer.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/typeahead-js/typeahead.js' %}"></script>
+      <script src="{% static 'portal/vendor/js/menu.js' %}"></script>
+      <script src="{% static 'portal/js/main.js' %}"></script>
+      <!--Vendors Javascript-->
+      <script src="{% static 'portal/vendor/libs/select2/select2.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/%40form-validation/popular.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/%40form-validation/bootstrap5.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/%40form-validation/auto-focus.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/cleavejs/cleave.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/cleavejs/cleave-phone.js' %}"></script>
+      <script src="{% static 'portal/vendor/libs/sweetalert2/sweetalert2.js' %}"></script>
+      <!--Page Javascript-->
+      <script src="{% static 'portal/js/pages-account-settings-account.js' %}"></script>
+   </body>
+</html>
