@@ -16,7 +16,7 @@
             </div>
          </div>
          <!-- PAGE-HEADER END -->
-         <form method="post" {% if userdata %}action="{% url 'adminconsole:update_user' user.id %}"{% else %}action="{% url 'adminconsole:create_user' %}"{% endif %}  id="userForm" name="userForm" enctype="multipart/form-data">
+         <form method="post" {% if userdata %}action="{% url 'adminconsole:update_user' userdata.id %}"{% else %}action="{% url 'adminconsole:create_user' %}"{% endif %}  id="userForm" name="userForm" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- ROW OPEN -->
             <div class="row">
@@ -34,7 +34,7 @@
                                 data-bs-height="180" 
                                 id="image" 
                                 onchange="validateMediaFile(this)"
-                                {% if userdata.image %} data-default-file="{{user.image.url}}" {% endif %} {% if not user.image %}required {% endif %}/>
+                                {% if userdata.image %} data-default-file="{{userdata.image.url}}" {% endif %} {% if not userdata.image %}required {% endif %}/>
                             </div>
                         </div>
                         </div>
