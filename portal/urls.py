@@ -8,6 +8,5 @@ urlpatterns = [
     path('dashboard/', dashboard, name="dashboard"),
     path('data/', data, name="data"),
     path('data-edit/', data_edit, name="data_edit"),
-    path('profile-update/', profile_update, name="profile_update"),
-    
+    path('profile-update/', profile_update, name="profile_update")
 ]
