@@ -3,7 +3,7 @@ from portal.helper import renderhelper
 
 # Create your views here.
 def myfunction(request):
-    print("Hello")
+    print("Hello this is a test function")
 
 
 def login(request):
