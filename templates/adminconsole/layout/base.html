@@ -1,0 +1,235 @@
+<!doctype html>
+{% load static %}
+<html lang="en" dir="ltr">
+   <head>
+      <!-- META DATA -->
+      <meta charset="UTF-8">
+      <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- FAVICON -->
+      <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminconsole/assets/images_ex/icon.png' %}" />
+      <!-- TITLE -->
+      <title>Core Cognitics | Dashboard</title>
+      <!-- BOOTSTRAP CSS -->
+      <link id="style" href="{% static 'adminconsole/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+      <!-- STYLE CSS -->
+      <link href="{% static 'adminconsole/assets/css/style.css' %}" rel="stylesheet" />
+      <link href="{% static 'adminconsole/assets/css/dark-style.css' %}" rel="stylesheet" />
+      <link href="{% static 'adminconsole/assets/css/transparent-style.css' %}" rel="stylesheet">
+      <link href="{% static 'adminconsole/assets/css/skin-modes.css' %}" rel="stylesheet" />
+      <link href="{% static 'adminconsole/assets/css/style-custom.css' %}" rel="stylesheet" />
+      <!--- FONT-ICONS CSS -->
+      <link href="{% static 'adminconsole/assets/css/icons.css' %}" rel="stylesheet" />
+      <!-- COLOR SKIN CSS -->
+      <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static 'adminconsole/assets/colors/color1.css' %}" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   </head>
+   <body class="app sidebar-mini ltr light-mode">
+      <!-- PAGE -->
+      <div class="page">
+         <div class="page-main">
+            <!-- app-Header -->
+            {% include 'adminconsole/layout/header.html' %}
+            <!-- /app-Header -->
+            <!--APP-SIDEBAR-->
+            <div class="sticky">
+               <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+               <div class="app-sidebar">
+                  <div class="side-header">
+                    <a class="header-brand1" href="{% url 'adminconsole:dashboard' %}">
+                        <img src="{% static 'adminconsole/assets/images_ex/logo-light.png' %}" class="header-brand-img desktop-logo" alt="logo">
+                        <img src="{% static 'adminconsole/assets/images_ex/icon.png' %}" class="header-brand-img toggle-logo" alt="logo">
+                        <img src="{% static 'adminconsole/assets/images_ex/icon.png' %}" class="header-brand-img light-logo" alt="logo">
+                        <img src="{% static 'adminconsole/assets/images_ex/logo.png' %}" class="header-brand-img light-logo1" alt="logo">
+                    </a>
+                     <!-- LOGO -->
+                  </div>
+                  {% include 'adminconsole/layout/sidebar.html' %}
+               </div>
+               <!--/APP-SIDEBAR-->
+            </div>
+            <!--app-content open-->
+            {% csrf_token %}
+            {% block 'content' %}{% endblock 'content' %}
+            <!--app-content close-->
+         </div>
+         <!-- FOOTER -->
+         {% include 'adminconsole/layout/footer.html' %}
+         <!-- FOOTER END -->
+      </div>
+      <!-- BACK-TO-TOP -->
+      <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+      <!-- JQUERY JS -->
+      <script src="{% static 'adminconsole/assets/js/jquery.min.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/js/jquery.validate.min.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+      <script src="{% static 'adminconsole/js/masters.js' %}"></script>
+
+     
+      <!-- BOOTSTRAP JS -->
+      <script src="{% static 'adminconsole/assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+      
+      <!-- SPARKLINE JS-->
+      <script src="{% static 'adminconsole/assets/js/jquery.sparkline.min.js' %}"></script>
+      
+      <!-- Sticky js -->
+      <script src="{% static 'adminconsole/assets/js/sticky.js' %}"></script>
+      
+      <!-- CHART-CIRCLE JS-->
+      <!-- SIDEBAR JS -->
+      <script src="{% static 'adminconsole/assets/plugins/sidebar/sidebar.js' %}"></script>
+      
+      <!-- INTERNAL Flot JS -->
+      <script src="{% static 'adminconsole/assets/plugins/flot/jquery.flot.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/flot/jquery.flot.fillbetween.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/flot/dashboard.sampledata.js' %}"></script>
+      
+      <!-- SIDE-MENU JS-->
+      <script src="{% static 'adminconsole/assets/plugins/sidemenu/sidemenu.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/date-picker/date-picker.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/date-picker/jquery-ui.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/input-mask/jquery.maskedinput.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/fileuploads/js/fileupload.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/fileuploads/js/file-upload.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/select2/select2.full.min.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/js/select2.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/multipleselect/multiple-select.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/multipleselect/multi-select.js' %}"></script>
+      
+      <!-- Color Theme js -->
+      <script src="{% static 'adminconsole/assets/js/themeColors.js' %}"></script>
+      
+      <!-- CUSTOM JS -->
+      <script src="{% static 'adminconsole/assets/js/custom.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/summernote/summernote1.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/js/summernote.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/js/custom-js-new.js' %}"></script>
+
+      <!-- NITIFY -->
+
+      <script src="{% static 'adminconsole/assets/plugins/notify/js/rainbow.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/notify/js/sample.js' %}"></script>
+      <script src="{% static 'adminconsole/assets/plugins/notify/js/notifIt.js' %}"></script>
+ 
+      <!-- INTERNAL File-Uploads Js-->
+      <script>
+         function not1() {
+             notif({
+                 msg: "<b>Success:</b> Content Updated Successfully",
+                 type: "success"
+             });
+         }
+         
+         function not2() {
+             notif({
+                 msg: "<b>Oops!</b> An Error Occurred",
+                 type: "error",
+                 position: "center"
+             });
+         }
+         
+         $('.fc-datepicker').datepicker({
+             showOtherMonths: false,
+             selectOtherMonths: false
+         });
+      </script>
+      <script>
+        $('[data-fancybox]').fancybox({
+            // Options will go here
+            buttons: [
+                'close'
+            ],
+            wheel: false,
+            transitionEffect: "slide",
+            // thumbs          : false,
+            // hash            : false,
+            loop: true,
+            // keyboard        : true,
+            toolbar: false,
+            // animationEffect : false,
+            // arrows          : true,
+            clickContent: false
+        });
+     </script>
+      <script>
+         jQuery(document).ready(function() {
+             ImgUpload();
+         });
+         
+         function ImgUpload() {
+             var imgWrap = "";
+             var imgArray = [];
+         
+             $('.upload__inputfile').each(function() {
+                 $(this).on('change', function(e) {
+                     imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                     var maxLength = $(this).attr('data-max_length');
+         
+                     var files = e.target.files;
+                     var filesArr = Array.prototype.slice.call(files);
+                     var iterator = 0;
+                     filesArr.forEach(function(f, index) {
+         
+                         if (!f.type.match('image.*')) {
+                             return;
+                         }
+         
+                         if (imgArray.length > maxLength) {
+                             return false
+                         } else {
+                             var len = 0;
+                             for (var i = 0; i < imgArray.length; i++) {
+                                 if (imgArray[i] !== undefined) {
+                                     len++;
+                                 }
+                             }
+                             if (len > maxLength) {
+                                 return false;
+                             } else {
+                                 imgArray.push(f);
+         
+                                 var reader = new FileReader();
+                                 reader.onload = function(e) {
+                                     var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                     imgWrap.append(html);
+                                     iterator++;
+                                 }
+                                 reader.readAsDataURL(f);
+                             }
+                         }
+                     });
+                 });
+             });
+         
+             $('body').on('click', ".upload__img-close", function(e) {
+                 var file = $(this).parent().data("file");
+                 for (var i = 0; i < imgArray.length; i++) {
+                     if (imgArray[i].name === file) {
+                         imgArray.splice(i, 1);
+                         break;
+                     }
+                 }
+                 $(this).parent().parent().remove();
+             });
+         }
+      </script>
+      <script>
+         $('.multi-field-wrapper').each(function () {
+             var $wrapper = $('.multi-fields', this);
+             $(".add-field", $(this)).click(function (e) {
+                 $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find(
+                         'input,textarea').val('')
+                     .focus();
+             });
+             $('.multi-field .remove-field', $wrapper).click(function () {
+                 if ($('.multi-field', $wrapper).length > 1)
+                     $(this).parent('.multi-field').remove();
+             });
+         });
+      </script>
+      {% block page_script %}{% endblock page_script %}
+   </body>
+</html>

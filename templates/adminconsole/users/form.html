@@ -1,0 +1,80 @@
+{% extends "adminconsole/layout/base.html" %}
+{% load static %}
+{% block 'content' %}
+<!--app-content open-->
+<div class="main-content app-content mt-0">
+   <div class="side-app">
+      <!-- CONTAINER -->
+      <div class="main-container container-fluid">
+         <!-- PAGE-HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">{% if user %}Edit {% else %}Add{% endif %} Banner</h1>
+            <div>
+               <a class="btn btn-primary" href="{% url 'adminconsole:users' %}"><i class="side-menu__icon fe fe-eye mx-1"></i>View All</a>
+               {% comment %} <a class="btn btn-primary" href="{% url 'adminconsole:create_user' %}"><i class="side-menu__icon fe fe-plus mx-1"></i>Add New</a> {% endcomment %}
+                
+            </div>
+         </div>
+         <!-- PAGE-HEADER END -->
+         <form method="post" {% if user %}action="{% url 'adminconsole:update_user' user.id %}"{% else %}action="{% url 'adminconsole:create_user' %}"{% endif %}  id="userForm" name="userForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- ROW OPEN -->
+            <div class="row">
+                <div class="col-md-4 col-xl-4 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Image</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 mb-4 mb-lg-0">
+                                <input type="file" 
+                                name="image"
+                                class="dropify" 
+                                data-bs-height="180" 
+                                id="image" 
+                                onchange="validateMediaFile(this)"
+                                {% if user.image %} data-default-file="{{user.image.url}}" {% endif %} {% if not user.image %}required {% endif %}/>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    
+                </div> 
+                <div class="col-md-8 col-xl-8 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row col-lg-12">
+                                <div class="form-group col-lg-12">
+                                    <label for="" class="form-label">Heading</label>
+                                    <textarea type="text" class="form-control" id="heading" placeholder="Heading" name="heading">{% if user.heading %}{{user.heading}}{% endif %}</textarea>
+                                </div>
+                                <div class="form-group col-lg-12 col-12">
+                                    <label for="" class="form-label">Sequence</label>
+                                    <input type="number" class="form-control" id="sequence" placeholder="Sequence" name="sequence" value="{% if user %}{% if user.sequence %}{{user.sequence}}{% endif %}{% else %}{% if sequence %}{{sequence}}{% endif %}{% endif %}">
+                                </div>
+                               
+                            </div>
+                            <div class="form-group col-lg-3 col-3">
+                                <button type="submit" id="submitButton" class="btn btn-primary mt-4 mb-0">Submit</button>
+                                <a href="{% url 'adminconsole:users' %}" class="btn btn-danger mt-4 ">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <!-- ROW CLOSED -->
+            </div>
+            <!-- CONTAINER END -->
+        </form>
+      </div>
+   </div>
+</div>
+<!--app-content close-->
+{% endblock 'content' %}
+
+{% block page_script %}
+<script src="{% static 'adminconsole/js/actions.js' %}"></script>
+<script src="{% static 'adminconsole/js/forms.js' %}"></script>
+{% endblock page_script %}
+    

@@ -1,0 +1,22 @@
+{% load static %}
+<form id="careerUpdateForm" name="careerUpdateForm" class="careerUpdateForm" action="{% url 'adminconsole:update_career' id %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="modal-body text-start">
+        <label><b>Heading</b></label>
+        <input type="text" class="form-control" placeholder="Title" name="title" value="{{career.title}}" />
+    </div>
+
+    <div class="modal-body text-start">
+        <label><b>Sequence</b></label>
+        <input type="sequence" id="sequence" class="form-control" placeholder="Sequence" name="sequence" value="{{career.sequence}}">
+    </div>
+
+    <label id="error-message" style="color: red; display: none;"></label>
+
+    <div class="modal-footer">
+    <button id="careerupdateBtn" type="submit" class="btn btn-primary mt-4 mb-0" href="">Submit</button>
+    </div>
+</form>
+{% block page_script %}
+<script src="{% static 'adminconsole/js/forms.js' %}"></script>
+{% endblock page_script %}

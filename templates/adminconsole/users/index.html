@@ -1,0 +1,143 @@
+{% extends 'adminconsole/layout/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!--app-content open--> 
+<div class="main-content app-content mt-0">
+    <div class="side-app">
+        <!-- CONTAINER -->
+        <div class="main-container container-fluid">
+            <!-- PAGE-HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Careers</h1>
+                <div>
+                    <a class="btn btn-primary" href="{% url 'adminconsole:create_user' %}"><i class="side-menu__icon fe fe-plus mx-1"></i>Add New</a>
+                    {% comment %} <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaldemo3"><i class="side-menu__icon fe fe-plus mx-1"></i>Add New</a> {% endcomment %}
+                </div>
+            </div>
+            <!-- PAGE-HEADER END -->
+            <!-- ROW OPEN -->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                        </div>
+                        <div class="card-body">
+                            <form name='searchForm' id="searchForm" action="{% url 'adminconsole:users' %}">
+
+                                <div class="row">
+                                    <div class="form-group col-lg-2 col-12">
+                                        <input type="text" id="keyword_search" name="keyword_search" class="form-control" Placeholder="Enter the name to search">
+                                     </div>
+                                   <div class="form-group col-lg-2 col-12">
+                                      <select name="filter_status" id="filter_status" class="form-control form-select select2" data-bs-placeholder="Select Status"  id="filter_status">
+                                         <option selected value="all">All</option>
+                                         <option value="active">Active</option>
+                                         <option value="inactive">Inactive</option>
+                                      </select>
+                                   </div>
+                                   <div class="form-group col-lg-3 col-12">
+                                      <a class="btn btn-primary mr-1" href="javascript:void(0)" onclick="FilterMaster('')">Search</a>
+                                      <a class="btn btn-default" href="javascript:void(0)" onclick="ResetFilter()">Reset</a>
+                                  </div>
+                                </div>
+                             </form>
+
+                            <div class="table-responsive">
+                                <table class="table border-top table-bordered mb-0 table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No</th>
+                                            <th>Title</th>
+                                            <th>Sequence</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="master-tbody">
+                                        {% include 'adminconsole/users/list_view.html' %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-body" id="master-pagination">
+                                {% include 'adminconsole/users/pagination_view.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ROW CLOSED -->
+        </div>
+        <!-- CONTAINER END -->
+    </div>
+</div>
+<!--app-content close-->
+
+<!-- modaldetails modal -->
+
+<div class="modal  fade" id="modaldemo3" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md modal-dialog-centered text-center" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Career</h3>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form id="userForm" name="userForm" class="userForm" action="{% url 'adminconsole:create_user' %}" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <div class="modal-body text-start">
+                    <label><b>Title</b></label>
+                    <input type="title" class="form-control" placeholder="Title" name="title" id="title" />
+                    <label id="error-message" style="color: red; display: none;"></label>
+                </div>
+                <div class="modal-footer">
+                <button id="submitButton" type="submit" class="btn btn-primary mt-4 mb-0" href="">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal  fade" id="usereditModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md modal-dialog-centered text-center" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Heading</h3>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="usereditform-div"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal  fade" id="delete-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md modal-dialog-centered text-center" role="document">
+        <div class="modal-content ">
+            
+            <div class="modal-body">
+                <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                <h4 class="text-danger">Are You Sure Do You Want To Delete ?</h4>
+                <p class="mg-b-20 mg-x-20">Item Will be Deleted Permanently</p>
+                <button class="btn btn-success delete-btn-confirm" id="delete-btn-confirm" data-url="" data-item-id="">Yes</button>
+                <button aria-label="Close" id="modal-close-btn" class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Cancel</button>
+            </div>
+            <div class="modal-footer">
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block page_script %}
+<script src="{% static 'adminconsole/js/forms.js' %}"></script>
+<script src="{% static 'adminconsole/js/actions.js' %}"></script>
+<script src="{% static 'adminconsole/js/delete.js' %}"></script>
+{% endblock page_script %}

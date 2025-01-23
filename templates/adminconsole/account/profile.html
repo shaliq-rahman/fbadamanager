@@ -1,0 +1,94 @@
+{% extends 'adminconsole/layout/base.html' %}
+
+{% block 'content' %}
+{% load static %}
+<!--app-content open-->
+
+<div class="main-content app-content mt-0">
+    <div class="side-app">
+        <!-- CONTAINER -->
+
+        <div class="main-container container-fluid">
+            <!-- PAGE-HEADER -->
+
+            <div class="page-header">
+                <h1 class="page-title">Profile View</h1>
+            </div>
+
+            <!-- PAGE-HEADER END -->
+
+            <!-- ROW-1 OPEN -->
+
+            <form id="profileForm" class="profileForm" name="profileForm" method="post" action="{% url 'adminconsole:profile' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Edit Password</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="form-label">Current Password</label>
+
+                                        <div class="wrap-input100 validate-input input-group" id="Password-toggle">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                            </a>
+
+                                            <input class="input100 form-control" type="password" placeholder="Current Password" autocomplete="current-password" id="current_password" name="current_password"/>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">New Password</label>
+
+                                        <div class="wrap-input100 validate-input input-group" id="Password-toggle1">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                            </a>
+
+                                            <input class="input100 form-control" type="password" placeholder="New Password" autocomplete="new-password" id="new_password" name="new_password" />
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Confirm Password</label>
+
+                                        <div class="wrap-input100 validate-input input-group" id="Password-toggle2">
+                                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                            </a>
+
+                                            <input class="input100 form-control" type="password" placeholder="Confirm Password" autocomplete="new-password" id="confirm_new_password" name="confirm_new_password" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer text-end">
+                                    <button href="javascript:void(0)" class="btn btn-success" type="submit" id="submit_btn">Update</button>
+                                    <a href="{% url 'adminconsole:dashboard' %}" class="btn btn-danger">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- ROW-1 CLOSED -->
+    </div>
+
+    <!-- CONTAINER END -->
+</div>
+
+<!--app-content close-->
+{% endblock 'content' %}
+{% block page_script %}
+<script src="{% static 'adminconsole/js/account.js' %}"></script>
+{% endblock page_script %}
