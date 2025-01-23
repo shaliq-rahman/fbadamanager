@@ -21,7 +21,8 @@ from django.db.models import Q
 from django.http import Http404
 today = date.today()
 import pdb
-from adminconsole.helper import is_image_or_video
+from adminconsole.helper import is_image_or_video, generate_unique_username
+
 
 
 #USERS
@@ -36,12 +37,17 @@ class UserView(LoginRequiredMixin, View):
             status = request.GET.get('status', None)
             
             if keyword:
-                filters |= Q(title__icontains=keyword)
-                
+                filters |= Q(name__icontains=keyword)
+                filters |= Q(email__icontains=keyword)
+                filters |= Q(access_token__icontains=keyword)
+                filters |= Q(ad_account_id__icontains=keyword)
+                filters |= Q(app_id__icontains=keyword)
+                filters |= Q(app_secret__icontains=keyword)
             if status and status != 'all':
                 status = True if status == 'active' else False
                 filters &= Q(is_active=status)
                 
+        filters &= Q(is_superuser=False)   
         users = User.objects.filter(filters).order_by('-id')
         try:
             page = int(request.GET.get("page", 1))
@@ -81,11 +87,41 @@ class UserCreateView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):   
         try:
             with transaction.atomic():
-                title = request.POST.get('title', None)
-                max_sequence = User.objects.all().count()
-                sequence = (max_sequence or 0) + 1  
-            
-                User.objects.create(title=title, sequence=sequence)
+                name = request.POST.get('name', None)
+                email = request.POST.get('email', None)
+                access_token = request.POST.get('access_token', None)
+                ad_account_id = request.POST.get('ad_account_id', None)
+                app_id = request.POST.get('app_id', None)
+                app_secret = request.POST.get('app_secret', None)
+                password = request.POST.get('password', None)
+                c_password = request.POST.get('c_password', None)
+                
+                profile_image = request.FILES.get('image', None)
+                
+                # Validate required fields
+                if not name or not email or not password or not c_password:
+                    return JsonResponse({'status': False, 'message':'Name, email, and password are required', 'redirect_url': reverse('adminconsole:create_user')})
+                if password != c_password:
+                    return JsonResponse({'status': False, 'message':'Passwords do not match.', 'redirect_url': reverse('adminconsole:create_user')})
+                
+
+
+                # Generate unique username
+                username = generate_unique_username(name)
+
+                user = User.objects.create(
+                    name=name,
+                    email=email,
+                    username=username,
+                    access_token=access_token,
+                    ad_account_id=ad_account_id,
+                    app_id=app_id,
+                    app_secret=app_secret,
+                    profile_image=profile_image,
+                )
+                user.set_password(password)  # Hash the password
+                user.save()
+                
                 return JsonResponse({'status': True, 'message':USER_CREATED, 'redirect_url': reverse('adminconsole:users')})
         except Exception as dberror:
             error_message = clean_text(str(dberror))
@@ -95,8 +131,8 @@ class UserUpdateView(LoginRequiredMixin, View):
     login_url = LOGIN_URL
 
     def get(self, request, id, *args, **kwargs):
-        user = get_object_or_404(User, id=id)
-        context = {'user': user, 'id':id}
+        userdata = get_object_or_404(User, id=id)
+        context = {'userdata': userdata, 'id':id}
         return renderfile(request,'users','form', context)
 
 
@@ -105,18 +141,47 @@ class UserUpdateView(LoginRequiredMixin, View):
         try:
             with transaction.atomic():
                 filetype, response = None, {}
-                user = get_object_or_404(User, id=id)
+                userdata = User.objects.get(id=id)
                 
-                sequence = request.POST.get('sequence', None)
-                title = request.POST.get('title', None)
+                name = request.POST.get('name', None)
+                email = request.POST.get('email', None)
+                access_token = request.POST.get('access_token', None)
+                ad_account_id = request.POST.get('ad_account_id', None)
+                app_id = request.POST.get('app_id', None)
+                app_secret = request.POST.get('app_secret', None)
+                password = request.POST.get('password', None)
+                c_password = request.POST.get('c_password', None)
                 
+                profile_image = request.FILES.get('image', None)
                 
-                if sequence:
-                    user.sequence = sequence
-                if title:
-                    user.title = title
+                # Validate required fields
+                if not name or not email or not password or not c_password:
+                    return JsonResponse({'status': False, 'message':'Name, email, and password are required', 'redirect_url': reverse('adminconsole:create_user')})
+                if password != c_password:
+                    return JsonResponse({'status': False, 'message':'Passwords do not match.', 'redirect_url': reverse('adminconsole:create_user')})
+                
+                # if User.objects.filter(email=email).exclude(email=userdata.email):
+                #     return JsonResponse({'status': False, 'message':'Email already exists.', 'redirect_url': reverse('adminconsole:create_user')})
+                
+                if name:
+                    userdata.name = name
+                if email:
+                    userdata.email = email
+                if access_token:
+                    userdata.access_token = access_token
+                if ad_account_id:
+                    userdata.ad_account_id = ad_account_id
+                if app_id:
+                    userdata.app_id = app_id
+                if app_secret:
+                    userdata.app_secret = app_secret
+                if profile_image:
+                    userdata.profile_image = profile_image
                     
-                user.save()
+                if password and c_password:
+                    userdata.set_password(password)  # Hash the password
+                    userdata.save()
+                
                 response['status'] = True
                 response['message'] = USER_CREATED
                 response['redirect_url'] = reverse('adminconsole:users')

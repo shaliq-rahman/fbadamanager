@@ -8,7 +8,7 @@
       <div class="main-container container-fluid">
          <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">{% if user %}Edit {% else %}Add{% endif %} Banner</h1>
+                <h1 class="page-title">{% if userdata %}Edit {% else %}Add{% endif %} User</h1>
             <div>
                <a class="btn btn-primary" href="{% url 'adminconsole:users' %}"><i class="side-menu__icon fe fe-eye mx-1"></i>View All</a>
                {% comment %} <a class="btn btn-primary" href="{% url 'adminconsole:create_user' %}"><i class="side-menu__icon fe fe-plus mx-1"></i>Add New</a> {% endcomment %}
@@ -16,7 +16,7 @@
             </div>
          </div>
          <!-- PAGE-HEADER END -->
-         <form method="post" {% if user %}action="{% url 'adminconsole:update_user' user.id %}"{% else %}action="{% url 'adminconsole:create_user' %}"{% endif %}  id="userForm" name="userForm" enctype="multipart/form-data">
+         <form method="post" {% if userdata %}action="{% url 'adminconsole:update_user' user.id %}"{% else %}action="{% url 'adminconsole:create_user' %}"{% endif %}  id="userForm" name="userForm" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- ROW OPEN -->
             <div class="row">
@@ -34,7 +34,7 @@
                                 data-bs-height="180" 
                                 id="image" 
                                 onchange="validateMediaFile(this)"
-                                {% if user.image %} data-default-file="{{user.image.url}}" {% endif %} {% if not user.image %}required {% endif %}/>
+                                {% if userdata.image %} data-default-file="{{user.image.url}}" {% endif %} {% if not user.image %}required {% endif %}/>
                             </div>
                         </div>
                         </div>
@@ -46,13 +46,57 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row col-lg-12">
-                                <div class="form-group col-lg-12">
-                                    <label for="" class="form-label">Heading</label>
-                                    <textarea type="text" class="form-control" id="heading" placeholder="Heading" name="heading">{% if user.heading %}{{user.heading}}{% endif %}</textarea>
+                                <div class="form-group col-lg-6">
+                                    <label for="" class="form-label">Name </label>
+                                    <input name="name" type="text" class="form-control" id="name" {% if userdata %}value="{{userdata.name}}"{% endif %}  placeholder="Enter the user name">
                                 </div>
-                                <div class="form-group col-lg-12 col-12">
-                                    <label for="" class="form-label">Sequence</label>
-                                    <input type="number" class="form-control" id="sequence" placeholder="Sequence" name="sequence" value="{% if user %}{% if user.sequence %}{{user.sequence}}{% endif %}{% else %}{% if sequence %}{{sequence}}{% endif %}{% endif %}">
+
+                                <div class="form-group col-lg-6">
+                                    <label for="" class="form-label">Email</label>
+                                    <input name="email" type="text" class="form-control" id="email" {% if userdata %}value="{{userdata.email}}"{% endif %}  placeholder="Enter user email">
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <label for="" class="form-label">Access Token</label>
+                                    <textarea name="access_token" type="text" class="form-control" id="access_token" placeholder="Enter your fb account access token">{% if userdata.access_token %}{{userdata.access_token}}{% endif %}</textarea>
+                                
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="" class="form-label">Ad Account Id</label>
+                                    <input name="ad_account_id" type="text" class="form-control" id="ad_account_id" {% if userdata.ad_account_id %}value="{{userdata.ad_account_id}}"{% endif %}  placeholder="Enter fb ad account id">
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="" class="form-label">App ID</label>
+                                    <input name="app_id" type="text" class="form-control" id="app_id" {% if userdata.app_id %}value="{{userdata.app_id}}"{% endif %}  placeholder="Enter fb APP ID">
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <label for="" class="form-label">App Secret</label>
+                                    <textarea name="app_secret" type="text" class="form-control" id="app_secret" placeholder="Enter App Secret">{% if userdata.app_secret %}{{userdata.app_secret}}{% endif %}</textarea>
+                                </div>
+
+
+
+                                <div class="form-group col-lg-6 col-12">
+                                    <label for="" class="form-label">Password</label>
+                                    <div class="wrap-input100 validate-input input-group" id="Password-toggle1">
+                                        <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                        <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                        </a>
+                                        <input {% if userdata %}value="{{userdata.pass_str}}" {% endif %} name="password" type="password" class="form-control password" id="password" placeholder="Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-6 col-12">
+                                    <label for="" class="form-label">Confirm Password</label>
+                                    <div class="wrap-input100 validate-input input-group" id="Password-toggle2">
+                                        <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                        <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                        </a>
+                                        <input {% if userdata %}value="{{userdata.pass_str}}" {% endif %} name="c_password" type="password" class="form-control password" id="c_password" placeholder="Confirm Password">
+                                    </div>
                                 </div>
                                
                             </div>
