@@ -5,6 +5,10 @@ import random
 from django.utils import timezone
 from datetime import timedelta
 import magic
+from django.utils.text import slugify
+import random
+import string
+from adminconsole.models import User
 
 
 def is_ajax(request):
@@ -64,3 +68,12 @@ def clean_text(text):
     cleaned_text = re.sub(r"[\'\[\]\"!@#$%^&*()_+=;:'<>?,/\\-]", "", text)
     cleaned_text = re.sub(r"\s+", " ", cleaned_text)  # Replace multiple spaces with a single space
     return cleaned_text.strip()  # Trim leading and trailing whitespace
+
+
+
+def generate_unique_username(name):
+    base_username = slugify(name)[:20]  # Slugify the name to create a clean username
+    while True:
+        username = f"{base_username}{random.randint(100, 999)}"
+        if not User.objects.filter(username=username).exists():
+            return username

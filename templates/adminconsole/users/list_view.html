@@ -3,11 +3,17 @@
 {% for user in users %}
 <tr>
     <td>{{forloop.counter0|add:users.start_index}}</td>
-    <td>{{user.title}}</td>
-    <td>
-      <input class="form-control" name="sequence-{{user.id}}" value="{% if user.sequence %}{{user.sequence}}{% endif %}" oninput="updateseq('{{user.id}}', this, 'user')" >
+    <td>{{user.name}}</td>
+    <td> 
+      {% if user.profile_image %}
+     <a href="{{user.profile_image.url}}" data-fancybox="gallery"> <img class="img-responsive br-5" src="{{user.profile_image.url}}" alt="Thumb-1" style="width:50px;"></a>
+     {% endif %}
     </td>
-    
+    <td>{{user.email}}</td>
+    <td>{{user.access_token}}</td>
+    <td>{{user.ad_account_id}}</td>
+    <td>{{user.app_id}}</td>
+    <td>{{user.app_secret}}</td>
     <td>
       <div class="material-switch">
          <input class="master-toggle" id="someSwitchOptionSuccess-{{user.id}}" name="someSwitchOption001" type="checkbox" data-url="{% url 'adminconsole:toggle_user' user.id %}" data-item_id="{{user.id}}" {% if user.is_active %} checked {% endif %} />
@@ -15,7 +21,7 @@
      </div>  
     </td>
     <td>
-      <a class="btn btn-info btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#usereditModal" onclick="loadeditForm('{{user.id}}', 'user-form')"><i class="side-menu__icon fe fe-edit"></i></a>
+      <a class="btn btn-info btn-sm mb-1" href="{% url 'adminconsole:update_user' user.id %}"><i class="side-menu__icon fe fe-edit"></i></a>
       <a class="btn btn-danger btn-sm mb-1 delete-item" href="javascript:void(0)" data-item-id="{{user.id}}" data-url="{% url 'adminconsole:delete_user' user.id %}"><i class="side-menu__icon fe fe-trash" data-bs-toggle="modal" data-bs-target="#delete-modal"></i></a>
     </td>
 </tr>
