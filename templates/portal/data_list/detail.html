@@ -1,0 +1,263 @@
+{% extends 'portal/layout/base.html' %}
+{% load static %}
+
+{% block content %}     
+<div class="content-wrapper">
+    <!-- Content: Start -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+       <!-- Transactions Toast -->
+       <!--/ Transactions Toast -->
+       <!-- Transactions Table -->
+       <!-- permission required: view_transaction -->
+       <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">6</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Transactions</small>
+                      </div>
+                      <span class="badge bg-label-primary rounded p-2">
+                      <i class="ti ti-arrows-transfer-down ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 500.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Paid</small>
+                      </div>
+                      <span class="badge bg-label-success rounded p-2">
+                      <i class="ti ti-check ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 700.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Due</small>
+                      </div>
+                      <span class="badge bg-label-warning rounded p-2">
+                      <i class="ti ti-clock-down ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 900.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Canceled</small>
+                      </div>
+                      <span class="badge bg-label-danger rounded p-2">
+                      <i class="ti ti-x ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="card">
+          <div class="card-datatable table-responsive">
+             <table class="datatables-transaction table">
+                <thead class="border-top">
+                   <tr class="text-nowrap">
+                      <th></th>
+                      <th>Id</th>
+                      <th>Customer</th>
+                      <th>Transaction Date</th>
+                      <th>Due Date</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                      <td></td>
+                      <td>1</td>
+                      <td class="text-nowrap fw-medium text-heading">John Doe</td>
+                      <td class="text-nowrap">Jan. 1, 2022</td>
+                      <td class="text-nowrap">Jan. 31, 2022</td>
+                      <td class="text-nowrap">$ 100.00</td>
+                      <td>
+                         <div class="badge bg-label-success">
+                            Paid
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/1" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/1/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="John Doe"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td></td>
+                      <td>2</td>
+                      <td class="text-nowrap fw-medium text-heading">Jane Smith</td>
+                      <td class="text-nowrap">Feb. 1, 2022</td>
+                      <td class="text-nowrap">Feb. 28, 2022</td>
+                      <td class="text-nowrap">$ 200.00</td>
+                      <td>
+                         <div class="badge bg-label-warning">
+                            Due
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/2" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/2/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="Jane Smith"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td></td>
+                      <td>3</td>
+                      <td class="text-nowrap fw-medium text-heading">Bob Johnson</td>
+                      <td class="text-nowrap">March 1, 2022</td>
+                      <td class="text-nowrap">March 31, 2022</td>
+                      <td class="text-nowrap">$ 300.00</td>
+                      <td>
+                         <div class="badge bg-label-danger">
+                            Canceled
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/3" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/3/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="Bob Johnson"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td></td>
+                      <td>4</td>
+                      <td class="text-nowrap fw-medium text-heading">Alice Lee</td>
+                      <td class="text-nowrap">April 1, 2022</td>
+                      <td class="text-nowrap">April 30, 2022</td>
+                      <td class="text-nowrap">$ 400.00</td>
+                      <td>
+                         <div class="badge bg-label-success">
+                            Paid
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/4" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/4/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="Alice Lee"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td></td>
+                      <td>5</td>
+                      <td class="text-nowrap fw-medium text-heading">David Kim</td>
+                      <td class="text-nowrap">May 1, 2022</td>
+                      <td class="text-nowrap">May 31, 2022</td>
+                      <td class="text-nowrap">$ 500.00</td>
+                      <td>
+                         <div class="badge bg-label-warning">
+                            Due
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/5" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/5/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="David Kim"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td></td>
+                      <td>6</td>
+                      <td class="text-nowrap fw-medium text-heading">Emily Chen</td>
+                      <td class="text-nowrap">June 1, 2022</td>
+                      <td class="text-nowrap">June 30, 2022</td>
+                      <td class="text-nowrap">$ 600.00</td>
+                      <td>
+                         <div class="badge bg-label-danger">
+                            Canceled
+                         </div>
+                      </td>
+                      <td>
+                         <div class="d-flex align-items-center gap-1">
+                            <!-- permission required: edit_transaction -->
+                            <a href="/transactions/update/6" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"><i class='ti ti-edit ti-md'></i></a>
+                            <!-- permission required: delete_transaction -->
+                            <a href="/transactions/delete/6/" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill delete-transaction" data-transaction-username="Emily Chen"><i class="ti ti-trash ti-md"></i></a>
+                         </div>
+                      </td>
+                   </tr>
+                </tbody>
+             </table>
+          </div>
+       </div>
+       <!--/ Transactions Table -->
+       <script>
+          var addTransactionBtn = '' + true + '';
+          
+       </script>
+    </div>
+    <!-- / Content: End -->
+    <!-- Footer: Start -->
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+       <div class="container-xxl">
+          <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+             <div class="text-body">
+                © <script>
+                   document.write(new Date().getFullYear())
+                   
+                </script>, made with ❤️ by <a href="https://pixinvent.com/" target="_blank" class="footer-link">PixInvent</a>
+             </div>
+             <div class="d-none d-lg-inline-block">
+                <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+                <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+                <a href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/django-introduction.html" target="_blank" class="footer-link me-4">Documentation</a>
+                <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+             </div>
+          </div>
+       </div>
+    </footer>
+    <!-- / Footer -->
+    <!-- Footer: End -->
+    <div class="content-backdrop fade"></div>
+ </div>
+ {% endblock content %}

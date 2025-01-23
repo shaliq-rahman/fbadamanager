@@ -61,6 +61,14 @@ class CampaignsView(LoginRequiredMixin, View):
         data = {}
         return renderhelper(request, "portal", "data_list", template_name="index.html", context=data)
     
+    
+class CampaignsDetailView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    
+    def get(self, request, *args, **kwargs):
+        data = {}
+        return renderhelper(request, "portal", "data_list", template_name="detail.html", context=data)
+    
 # def myfunction(request):
 #     print("Hello this is a test function")
 
