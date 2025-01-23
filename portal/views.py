@@ -51,10 +51,18 @@ class LoginView(View):
             messages.error(request, "Invalid username/email or password.")
 
         return redirect('portal:login')  # Replace 'login' with the name of your login URL pattern
+
+
+#DASHBOARD
+class CampaignsView(LoginRequiredMixin, View):
+    login_url = '/login/'
     
+    def get(self, request, *args, **kwargs):
+        data = {}
+        return renderhelper(request, "portal", "data_list", template_name="index.html", context=data)
     
-def myfunction(request):
-    print("Hello this is a test function")
+# def myfunction(request):
+#     print("Hello this is a test function")
 
 
 # def login(request):
@@ -65,21 +73,21 @@ def myfunction(request):
 #     return renderhelper(request, "portal", "auth", template_name="login.html", context=context)
 
 
-def dashboard(request):
-    context = {
-        "title": "Example Page",
-        "message": "This is an example of using render_helper."
-    }
-    return renderhelper(request, "portal", "dashboard", template_name="index.html", context=context)
+# def dashboard(request):
+#     context = {
+#         "title": "Example Page",
+#         "message": "This is an example of using render_helper."
+#     }
+#     return renderhelper(request, "portal", "dashboard", template_name="index.html", context=context)
 
 
 
-def data(request):
-    context = {
-        "title": "Example Page",
-        "message": "This is an example of using render_helper."
-    }
-    return renderhelper(request, "portal", "data_list", template_name="index.html", context=context)
+# def data(request):
+#     context = {
+#         "title": "Example Page",
+#         "message": "This is an example of using render_helper."
+#     }
+#     return renderhelper(request, "portal", "data_list", template_name="index.html", context=context)
 
 
 def data_edit(request):
