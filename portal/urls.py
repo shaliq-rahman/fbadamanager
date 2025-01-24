@@ -14,4 +14,7 @@ urlpatterns = [
     path('campaigns/', CampaignsView.as_view(), name="campaigns"),
     path('campaigns/<str:id>/detail/', CampaignsDetailView.as_view(), name="campaigns_detail"),
     
+    path('display/', Display, name="display"),
+    
+    
 ]

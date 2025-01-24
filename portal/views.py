@@ -98,6 +98,14 @@ class CampaignsDetailView(LoginRequiredMixin, View):
 #     return renderhelper(request, "portal", "data_list", template_name="index.html", context=context)
 
 
+def Display(request):
+    context = {
+        "title": "Example Page",
+        "message": "This is an example of using render_helper."
+    }
+    return renderhelper(request, "portal", "data_list", template_name="detail_copy.html", context=context)
+
+
 def data_edit(request):
     context = {
         "title": "Example Page",
