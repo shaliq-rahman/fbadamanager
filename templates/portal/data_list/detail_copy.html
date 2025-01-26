@@ -1,0 +1,83 @@
+{% extends 'portal/layout/base.html' %}
+{% load static %}
+
+
+{% block content %}     
+<div class="content-wrapper">
+   <!-- Content: Start -->
+
+   <div class="container-xxl flex-grow-1 container-p-y">
+      <div class="row">
+        <!-- Left Section -->
+        <div class="col-md-6 border-end">
+          <div class="p-3">
+            <h3>Left Section</h3>
+            <p>Content for the left section goes here.</p>
+          </div>
+        </div>
+    
+        <!-- Right Section (Chat Section) -->
+        <div class="col-md-6 d-flex flex-column">
+          <!-- Chat History -->
+          <div class="chat-history-wrapper flex-grow-1 border-bottom overflow-auto">
+            <div class="chat-history-body">
+              <ul class="list-unstyled chat-history">
+                <li class="chat-message chat-message-right">
+                  <div class="d-flex overflow-hidden">
+                    <div class="chat-message-wrapper flex-grow-1">
+                      <div class="chat-message-text">
+                        <p class="mb-0">Hello! How can I assist you today?</p>
+                      </div>
+                      <div class="text-end text-muted mt-1">
+                        <small>10:00 AM</small>
+                      </div>
+                    </div>
+                    <div class="user-avatar flex-shrink-0 ms-4">
+                      <img src="{% static 'portal/img/avatars/1.png' %}" alt="Avatar" class="rounded-circle avatar-sm">
+                    </div>
+                  </div>
+                </li>
+                <!-- Add more chat messages here -->
+              </ul>
+            </div>
+          </div>
+    
+          <!-- Chat Input Section -->
+          <div class="chat-input-section d-flex p-3 align-items-center">
+            <input type="text" class="form-control me-2" placeholder="Type a message...">
+            <button class="btn btn-primary me-2">Send</button>
+            <button class="btn btn-secondary">
+              <i class="ti ti-paperclip"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+   <!-- / Content: End -->
+   <!-- Footer: Start -->
+   <!-- Footer -->
+   <footer class="content-footer footer bg-footer-theme">
+      <div class="container-xxl">
+         <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+            <div class="text-body">
+               © <script>
+                  document.write(new Date().getFullYear())
+                  
+               </script>2025, made with ❤️ by <a href="https://pixinvent.com/" target="_blank" class="footer-link">PixInvent</a>
+            </div>
+            <div class="d-none d-lg-inline-block">
+               <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+               <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+               <a href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/django-introduction.html" target="_blank" class="footer-link me-4">Documentation</a>
+               <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- / Footer -->
+   <!-- Footer: End -->
+   <div class="content-backdrop fade"></div>
+</div>
+{% endblock content %}
