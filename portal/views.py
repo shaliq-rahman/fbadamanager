@@ -53,7 +53,7 @@ class LoginView(View):
         return redirect('portal:login')  # Replace 'login' with the name of your login URL pattern
 
 
-#DASHBOARD
+#CAMPAIGN
 class CampaignsView(LoginRequiredMixin, View):
     login_url = '/login/'
     
@@ -61,7 +61,7 @@ class CampaignsView(LoginRequiredMixin, View):
         data = {}
         return renderhelper(request, "portal", "campaigns", template_name="index.html", context=data)
     
-    
+
 class CampaignsDetailView(LoginRequiredMixin, View):
     login_url = '/login/'
     
@@ -72,7 +72,6 @@ class CampaignsDetailView(LoginRequiredMixin, View):
 # def myfunction(request):
 #     print("Hello this is a test function")
 
-
 # def login(request):
 #     context = {
 #         "title": "Example Page",
@@ -80,15 +79,12 @@ class CampaignsDetailView(LoginRequiredMixin, View):
 #     }
 #     return renderhelper(request, "portal", "auth", template_name="login.html", context=context)
 
-
 # def dashboard(request):
 #     context = {
 #         "title": "Example Page",
 #         "message": "This is an example of using render_helper."
 #     }
 #     return renderhelper(request, "portal", "dashboard", template_name="index.html", context=context)
-
-
 
 # def data(request):
 #     context = {
