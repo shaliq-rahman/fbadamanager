@@ -15,6 +15,7 @@ def fetch_campaign_data(access_token, ad_account_id):
     
     # Define the fields to fetch
     fields = [
+    'campaign_id',
     'campaign_name', 
     'adset_name', 
     'ad_name', 
