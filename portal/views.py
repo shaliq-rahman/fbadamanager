@@ -59,7 +59,7 @@ class CampaignsView(LoginRequiredMixin, View):
     
     def get(self, request, *args, **kwargs):
         data = {}
-        return renderhelper(request, "portal", "data_list", template_name="index.html", context=data)
+        return renderhelper(request, "portal", "campaigns", template_name="index.html", context=data)
     
     
 class CampaignsDetailView(LoginRequiredMixin, View):
@@ -67,7 +67,7 @@ class CampaignsDetailView(LoginRequiredMixin, View):
     
     def get(self, request, *args, **kwargs):
         data = {}
-        return renderhelper(request, "portal", "data_list", template_name="detail_copy.html", context=data)
+        return renderhelper(request, "portal", "campaigns", template_name="detail.html", context=data)
     
 # def myfunction(request):
 #     print("Hello this is a test function")
