@@ -1,0 +1,15 @@
+{% for campaign in campaign_data %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ campaign.campaign_name }}</td>
+    <td>{{ campaign.adset_name }}</td>
+    <td>{{ campaign.ad_name }}</td>
+    <td>{{ campaign.objective }}</td>
+    <td>{{ campaign.impressions }}</td>
+    <td>{{ campaign.clicks }}</td>
+    <td>{{ campaign.spend }}</td>
+    <td>{{ campaign.cpm }}</td>
+    <td>{{ campaign.ctr }}</td>
+    <td>{{ campaign.cpc }}</td>
+</tr>
+{% endfor %}
