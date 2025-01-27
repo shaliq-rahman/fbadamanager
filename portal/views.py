@@ -9,7 +9,9 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import login  # This imports the correct function
 from .utils.campaigns import *
+from .utils.camps import *
 import pdb
+
 
 
 #DASHBOARD
@@ -61,17 +63,22 @@ class CampaignsView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user = User.objects.get(id=request.user.id)
         
-        # Facebook API credentials
-        access_token = user.access_token
-        app_id = user.app_id
-        app_secret = user.app_secret
-        ad_account_id = user.ad_account_id
         
-        # Initialize the API
-        initialize_facebook_api(access_token, app_id, app_secret)
+        campaign_data = facebook(request)
         
-        # Fetch campaign data
-        campaign_data = fetch_campaign_data(access_token, ad_account_id)
+        print('======', campaign_data)
+        
+        # # Facebook API credentials
+        # access_token = user.access_token
+        # app_id = user.app_id
+        # app_secret = user.app_secret
+        # ad_account_id = user.ad_account_id
+        
+        # # Initialize the API
+        # initialize_facebook_api(access_token, app_id, app_secret)
+        
+        # # Fetch campaign data
+        # campaign_data = fetch_campaign_data(access_token, ad_account_id)
         
         # Pass data to the template
         data = {
