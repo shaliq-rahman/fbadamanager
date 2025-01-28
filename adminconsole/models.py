@@ -93,3 +93,79 @@ class User(AbstractUser):
     
     def __str__(self):
         return self.username
+    
+    
+class Campaign(models.Model):
+    """
+    Represents a Facebook Ads Campaign.
+    """
+    campaign_id = models.CharField(max_length=100, unique=True)
+    campaign_name = models.CharField(max_length=255)
+    status = models.CharField(max_length=50)
+    objective = models.CharField(max_length=100)
+    bid_strategy = models.CharField(max_length=100, null=True, blank=True)
+    daily_budget = models.CharField(max_length=100, null=True, blank=True)
+    amount_spent = models.CharField(max_length=100, null=True, blank=True)
+    response_data = models.JSONField(null=True, blank=True)
+
+    def __str__(self):
+        return self.campaign_name
+
+
+class AdSet(models.Model):
+    """
+    Represents a Facebook Ads Ad Set, which belongs to a Campaign.
+    """
+    adset_id = models.CharField(max_length=100, unique=True)
+    adset_name = models.CharField(max_length=255)
+    status = models.CharField(max_length=50)
+    daily_budget = models.CharField(max_length=100, null=True, blank=True)
+    bid_strategy = models.CharField(max_length=100, null=True, blank=True)
+    amount_spent = models.CharField(max_length=100, null=True, blank=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name='adsets')
+    response_data = models.JSONField(null=True, blank=True)
+
+    def __str__(self):
+        return self.adset_name
+
+
+class Ad(models.Model):
+    """
+    Represents a Facebook Ad, which belongs to an Ad Set.
+    """
+    ad_id = models.CharField(max_length=100, unique=True)
+    ad_name = models.CharField(max_length=255)
+    status = models.CharField(max_length=50)
+    amount_spent = models.CharField(max_length=100, null=True, blank=True)
+    post_link = models.URLField(max_length=500, null=True, blank=True)
+    video_link = models.URLField(max_length=500, null=True, blank=True)
+    adset = models.ForeignKey(AdSet, on_delete=models.CASCADE, related_name='ads')
+    response_data = models.JSONField(null=True, blank=True)
+
+    def __str__(self):
+        return self.ad_name
+
+
+class AdMetrics(models.Model):
+    """
+    Represents metrics for a specific Facebook Ad.
+    """
+    ad = models.OneToOneField(Ad, on_delete=models.CASCADE, related_name='metrics')
+    impressions = models.IntegerField(null=True, blank=True)
+    cpm = models.CharField(max_length=100, null=True, blank=True)
+    ctr = models.CharField(max_length=100, null=True, blank=True)
+    cpc = models.CharField(max_length=100, null=True, blank=True)
+    clicks = models.IntegerField(null=True, blank=True)
+    landing_page_views = models.IntegerField(null=True, blank=True)
+    checkouts_initiated = models.IntegerField(null=True, blank=True)
+    add_to_carts = models.IntegerField(null=True, blank=True)
+    add_payment_info = models.IntegerField(null=True, blank=True)
+    cost_per_result = models.CharField(max_length=100, null=True, blank=True)
+    roas = models.CharField(max_length=100, null=True, blank=True)
+    video_views = models.IntegerField(null=True, blank=True)
+    hook_rate = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    hold_rate = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    response_data = models.JSONField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Metrics for {self.ad.ad_name}"

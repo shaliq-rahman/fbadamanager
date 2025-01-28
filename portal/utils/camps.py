@@ -60,7 +60,7 @@ def facebook(request):
         # 'status',                    # Status
         'objective',                 # Objective
         # 'bid_strategy',              # Bid strategy
-        # 'results',                   # Results (conversions)
+        'results',                   # Results (conversions)
         # 'cost_per_result',           # Cost per result
         # 'daily_budget',              # Daily budget
         'spend',                     # Amount spent

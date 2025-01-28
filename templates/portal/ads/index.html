@@ -85,7 +85,7 @@
        </div>
        <div class="card">
         <div class="card-header">
-            <h5 class="card-title">Campaigns List</h5>
+            <h5 class="card-title">Adsets Lists</h5>
             <div class="d-flex align-items-center row ">
               <div class="col-md-2 product_stock"><input type="search" class="form-control" placeholder="Search Product" aria-controls="DataTables_Table_0"></div>
               <div class="col-md-2 product_status"><select id="ProductStatus" class="form-select text-capitalize"><option value="">Status</option><option value="Scheduled">Scheduled</option><option value="Publish">Publish</option><option value="Inactive">Inactive</option></select></div>
@@ -105,30 +105,24 @@
                       </ul>
                   </div>
               </div>
-               <div class="col-md-2 product_stock">
-                  <button class="btn btn-secondary add-new btn-primary ms-2 ms-sm-0 waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button">
-                     <span><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add Product</span></span>
-                  </button>
-               </div>
-         </div>
+          </div>
         </div>
           <div class="card-datatable table-responsive">
              <table class="datatables-transaction table">
                 <thead class="border-top">
                     <tr>
                         <th>S.No</th>
-                        <th>Campaign Id</th>
-                        <th>Campaign Name</th>
+                        <th>Ad Id</th>
+                        <th>Ad Name</th>
                         <th>Status</th>
-                        <th>Objective</th>
-                        <th>Bid Strategy</th>
-                        <th>Daily Budget</th>
                         <th>Amount Spent</th>
+                        <th>Post Link</th>
+                        <th>Video Link</th>
                         <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                   {% include 'portal/campaigns/data_list.html' %}
+                   {% include 'portal/ads/data_list.html' %}
                 </tbody>
              </table>
              <div class="row mx-2 mt-3">

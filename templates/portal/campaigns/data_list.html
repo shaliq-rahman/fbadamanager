@@ -1,21 +1,16 @@
 {% for campaign in campaign_data %}
 <tr>
     <td>{{ forloop.counter }}</td>
-    <td>{{ campaign.name }}</td>
-
+    <td>{{ campaign.campaign_id }}</td>
     <td>{{ campaign.campaign_name }}</td>
-    <td>{{ campaign.adset_name }}</td>
-    <td>{{ campaign.ad_name }}</td>
+    <td>{{ campaign.status }}</td>
     <td>{{ campaign.objective }}</td>
-    <td>{{ campaign.impressions }}</td>
-    <td>{{ campaign.clicks }}</td>
-    <td>{{ campaign.spend }}</td>
-    <td>{{ campaign.cpm }}</td>
-    <td>{{ campaign.ctr }}</td>
-    <td>{{ campaign.cpc }}</td>
+    <td>{{ campaign.bid_strategy }}</td>
+    <td>{{ campaign.daily_budget }}</td>
+    <td>{{ campaign.amount_spent }}</td>
     <td>
         <div class="d-flex align-items-center">
-            <a href="{% url 'portal:campaigns_detail' campaign.id  %}" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill" data-bs-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview">
+            <a href="{% url 'portal:campaigns_adsets' campaign.campaign_id  %}" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill" data-bs-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview">
                 <i class="ti ti-eye ti-md"></i>
             </a>
         </div>
