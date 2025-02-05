@@ -17,4 +17,6 @@ urlpatterns = [
     path('campaigns/adsets/ads/<str:adid>/insights/', AdInsightsView.as_view(), name="campaigns_ad_insights"),
     path('campaigns/<str:id>/detail/', CampaignsDetailView.as_view(), name="campaigns_detail"),
     
+    path('ads/', CampaignsAdsView.as_view(), name="campaign_ads"),
+    path('ads/<str:adid>/', CampaignsAdsDetailView.as_view(), name="campaign_ads_detail"),
 ]

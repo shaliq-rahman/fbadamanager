@@ -3,7 +3,7 @@ from portal.helper import renderhelper
 from django.views import View
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from adminconsole.models import User, Campaign, AdSet, Ad, AdMetrics
+from adminconsole.models import User, Campaign, AdSet, Ad, AdMetrics, fbAdMetrics
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect, render
 from django.contrib import messages
@@ -246,3 +246,27 @@ def profile_update(request):
         "message": "This is an example of using render_helper."
     }
     return renderhelper(request, "portal", "profile", template_name="edit.html", context=context)
+
+
+
+#CAMPAIGN
+class CampaignsAdsView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    
+    def get(self, request, *args, **kwargs):
+        ads_data = fbAdMetrics.objects.all()
+        data = {
+            'ads_data': ads_data,
+        }
+        return renderhelper(request, "portal", "ads", template_name="index.html", context=data)
+    
+    
+class CampaignsAdsDetailView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    
+    def get(self, request, adid, *args, **kwargs):
+        ad_data = fbAdMetrics.objects.get(ad_id=adid)
+        data = {
+            'ad_data': ad_data,
+        }
+        return renderhelper(request, "portal", "ads", template_name="detail.html", context=data)

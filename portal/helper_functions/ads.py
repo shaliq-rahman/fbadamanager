@@ -1,5 +1,6 @@
 from facebook_business.api import FacebookAdsApi
 from facebook_business.adobjects.adaccount import AdAccount
+from adminconsole.models import fbAdMetrics
 
 # Replace these with your actual credentials
 APP_ID = '1124273585947713'
@@ -182,3 +183,39 @@ for ad_id, details in ad_details.items():
     print("Add Payment Info:      ", add_payment_info)
     print("Creative (Video/Image):", details.get('creative_link'))
     print("--------------------------------------------------\n")
+    
+    ad_metrics, created = fbAdMetrics.objects.update_or_create(
+    ad_id=ad_id,
+    defaults={
+        'period_start': date_start,
+        'period_end': date_stop,
+        'campaign_name': details.get('campaign_name'),
+        'campaign_objective': details.get('campaign_objective'),
+        'adset_name': details.get('adset_name'),
+        'ad_name': details.get('ad_name'),
+        'status': details.get('status'),
+        'bid_strategy': details.get('bid_strategy'),
+        'daily_budget': details.get('daily_budget'),
+        'results': results,
+        'cost_per_result': cost_per_result,
+        'amount_spent': spend,
+        'return_on_ad_spend': purchase_roas,
+        'hook_rate': hook_rate,
+        'hold_rate': hold_rate,
+        'cpm': cpm,
+        'link_ctr': website_ctr,
+        'link_cpc': cpc,
+        'link_clicks': clicks,
+        'landing_page_views': landing_page_views,
+        'checkouts_initiated': checkouts_initiated,
+        'add_to_carts': add_to_carts,
+        'add_payment_info': add_payment_info,
+        'creative_link': creative_link
+    }
+    )
+
+    # Check if the instance was created or updated
+    if created:
+        print("A new instance was created.")
+    else:
+        print("An existing instance was updated.")

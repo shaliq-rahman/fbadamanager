@@ -173,8 +173,8 @@ class AdMetrics(models.Model):
     
 class fbAdMetrics(models.Model):
     ad_id = models.CharField(max_length=255, primary_key=True, help_text="Unique identifier for the ad")
-    period_start = models.DateField(null=True, blank=True, help_text="Start date for the reporting period")
-    period_end = models.DateField(null=True, blank=True, help_text="End date for the reporting period")
+    period_start = models.CharField(max_length=255, null=True, blank=True, help_text="Start date for the reporting period")
+    period_end = models.CharField(max_length=255,null=True, blank=True, help_text="End date for the reporting period")
     campaign_name = models.CharField(max_length=255, null=True, blank=True)
     campaign_objective = models.CharField(max_length=100, null=True, blank=True)
     adset_name = models.CharField(max_length=255, null=True, blank=True)
@@ -198,8 +198,8 @@ class fbAdMetrics(models.Model):
     add_payment_info = models.CharField(max_length=255,null=True, blank=True)
     creative_link = models.URLField(max_length=500, null=True, blank=True, help_text="URL to the image or video creative")
     response_data = models.JSONField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __str__(self):
         return f"Ad {self.ad_id} - {self.ad_name or 'No Name'}"
