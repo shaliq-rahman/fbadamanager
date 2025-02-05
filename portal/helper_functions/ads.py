@@ -210,7 +210,7 @@ for ad_id, details in ad_details.items():
         'checkouts_initiated': checkouts_initiated,
         'add_to_carts': add_to_carts,
         'add_payment_info': add_payment_info,
-        'creative_link': creative_link
+        'creative_link': details.get('creative_link')
     }
     )
 

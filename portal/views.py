@@ -14,7 +14,7 @@ from django.contrib.auth import login  # This imports the correct function
 # from .utils.final import *
 from .helper_functions.campaigns import get_all_campaigns, get_ad_sets_by_campaign, get_ads_by_adset
 import pdb
-# from .helper_functions.ads import facebookapicall
+# from .helper_functions.ads import *
 
 
 
