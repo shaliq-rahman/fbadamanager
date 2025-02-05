@@ -169,3 +169,37 @@ class AdMetrics(models.Model):
 
     def __str__(self):
         return f"Metrics for {self.ad.ad_name}"
+    
+    
+class fbAdMetrics(models.Model):
+    ad_id = models.CharField(max_length=255, primary_key=True, help_text="Unique identifier for the ad")
+    period_start = models.DateField(null=True, blank=True, help_text="Start date for the reporting period")
+    period_end = models.DateField(null=True, blank=True, help_text="End date for the reporting period")
+    campaign_name = models.CharField(max_length=255, null=True, blank=True)
+    campaign_objective = models.CharField(max_length=100, null=True, blank=True)
+    adset_name = models.CharField(max_length=255, null=True, blank=True)
+    ad_name = models.CharField(max_length=255, null=True, blank=True)
+    status = models.CharField(max_length=50, null=True, blank=True)
+    bid_strategy = models.CharField(max_length=50, null=True, blank=True)
+    daily_budget = models.CharField(max_length=255, null=True, blank=True)
+    results = models.CharField(max_length=255, null=True, blank=True, help_text="Total conversion events (or other results as defined)")
+    cost_per_result = models.CharField(max_length=255, null=True, blank=True)
+    amount_spent = models.CharField(max_length=255, null=True, blank=True)
+    return_on_ad_spend = models.CharField(max_length=255, null=True, blank=True)
+    hook_rate = models.CharField(max_length=255,null=True, blank=True, help_text="Custom metric: Hook Rate (if calculated)")
+    hold_rate = models.CharField(max_length=255,null=True, blank=True, help_text="Custom metric: Hold Rate (if calculated)")
+    cpm = models.CharField(max_length=255,null=True, blank=True)
+    link_ctr = models.CharField(max_length=255,null=True, blank=True)
+    link_cpc = models.CharField(max_length=255,null=True, blank=True)
+    link_clicks = models.CharField(max_length=255,null=True, blank=True)
+    landing_page_views = models.CharField(max_length=255,null=True, blank=True)
+    checkouts_initiated = models.CharField(max_length=255,null=True, blank=True)
+    add_to_carts = models.CharField(max_length=255,null=True, blank=True)
+    add_payment_info = models.CharField(max_length=255,null=True, blank=True)
+    creative_link = models.URLField(max_length=500, null=True, blank=True, help_text="URL to the image or video creative")
+    response_data = models.JSONField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Ad {self.ad_id} - {self.ad_name or 'No Name'}"
