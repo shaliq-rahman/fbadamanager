@@ -28,6 +28,15 @@
                   </div>
               </div>
 
+              <div class="col-md-2 product_stock">
+               <div class="btn-group">
+                  <button id="fetch-latest-btn" onclick="fetchLatestData()" class="btn btn-secondary btn-label-secondary waves-effect waves-light" type="button">
+                      <i class="ti ti-refresh me-1 ti-xs"></i> Fetch Latest Data
+                  </button>
+                  <span id="fetch-loader" style="display:none;">🔄 Fetching...</span>
+              </div>
+           </div>
+
               {% comment %} <div class="col-md-2 product_stock">
                   <div class="btn-group">
                      <button id="download-btn" onclick="downloadExcel()">Download Excel</button>
@@ -114,6 +123,33 @@
                downloadButton.disabled = false;
            });
    }
+
+
+   function fetchLatestData() {
+      let fetchButton = document.getElementById("fetch-latest-btn");
+      let loader = document.getElementById("fetch-loader");
+  
+      // Show loader
+      loader.style.display = "inline-block";
+      fetchButton.disabled = true;
+  
+      // Fetch latest data
+      fetch("/fetch-latest-ads/")
+          .then(response => response.json()) // Assuming the API returns JSON
+          .then(data => {
+              console.log("Latest data fetched:", data);
+              
+              // Refresh the page
+              location.reload();
+          })
+          .catch(error => {
+              console.error("Fetching error:", error);
+          })
+          .finally(() => {
+              loader.style.display = "none";
+              fetchButton.disabled = false;
+          });
+  }
    </script>
    
  {% endblock page_script %}

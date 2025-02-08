@@ -20,6 +20,7 @@ from django.http import HttpResponse
 import ast
 import csv
 from django.http import JsonResponse
+from .helper_functions.fbads import fetch_facebook_ad_metrics
 
 
 
@@ -364,3 +365,17 @@ def download_excel(request):
     response['Content-Disposition'] = 'attachment; filename="fb_ad_metrics.xlsx"'
     
     return response
+
+
+
+def fetch_latest_ads(request):
+    try:
+        status = fetch_facebook_ad_metrics()  # Assuming this function fetches the latest data
+
+        if status:  # Assuming a successful fetch returns a truthy value
+            return JsonResponse({"success": True, "message": "Latest ads fetched successfully."})
+        else:
+            return JsonResponse({"success": False, "message": "Failed to fetch latest ads."}, status=400)
+
+    except Exception as e:
+        return JsonResponse({"success": False, "message": str(e)}, status=500)
