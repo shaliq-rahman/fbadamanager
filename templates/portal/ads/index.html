@@ -1,0 +1,154 @@
+{% extends 'portal/layout/base.html' %}
+{% load static %}
+
+{% block content %}     
+<div class="content-wrapper">
+    <!-- Content: Start -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+       <!-- Transactions Toast -->
+       <!--/ Transactions Toast -->
+       <!-- Transactions Table -->
+       <!-- permission required: view_transaction -->
+       <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">6</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Transactions</small>
+                      </div>
+                      <span class="badge bg-label-primary rounded p-2">
+                      <i class="ti ti-arrows-transfer-down ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 500.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Paid</small>
+                      </div>
+                      <span class="badge bg-label-success rounded p-2">
+                      <i class="ti ti-check ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 700.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Due</small>
+                      </div>
+                      <span class="badge bg-label-warning rounded p-2">
+                      <i class="ti ti-clock-down ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+             <div class="card">
+                <div class="card-body">
+                   <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                         <div class="d-flex align-items-end">
+                            <h3 class="mb-0 me-2">$ 900.0</h3>
+                            <small class="text-primary"></small>
+                         </div>
+                         <small>Total Canceled</small>
+                      </div>
+                      <span class="badge bg-label-danger rounded p-2">
+                      <i class="ti ti-x ti-sm"></i>
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Adsets Lists</h5>
+            <div class="d-flex align-items-center row ">
+              <div class="col-md-2 product_stock"><input type="search" class="form-control" placeholder="Search Product" aria-controls="DataTables_Table_0"></div>
+              <div class="col-md-2 product_status"><select id="ProductStatus" class="form-select text-capitalize"><option value="">Status</option><option value="Scheduled">Scheduled</option><option value="Publish">Publish</option><option value="Inactive">Inactive</option></select></div>
+              <div class="col-md-2 product_category"><select id="ProductCategory" class="form-select text-capitalize"><option value="">Category</option><option value="Household">Household</option><option value="Office">Office</option><option value="Electronics">Electronics</option><option value="Shoes">Shoes</option><option value="Accessories">Accessories</option><option value="Game">Game</option></select></div>
+              <div class="col-md-2 product_stock"><select id="ProductStock" class="form-select text-capitalize"><option value=""> Stock </option><option value="Out_of_Stock">Out of Stock</option><option value="In_Stock">In Stock</option></select></div>
+              <div class="col-md-2 product_stock">
+                  <div class="btn-group">
+                      <button class="btn btn-secondary dropdown-toggle btn-label-secondary waves-effect waves-light" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="ti ti-upload me-1 ti-xs"></i> Export
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                          <li><a class="dropdown-item" href="#"><i class="ti ti-printer me-2"></i> Print</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="ti ti-file me-2"></i> CSV</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="ti ti-file-export me-2"></i> Excel</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="ti ti-file-text me-2"></i> PDF</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="ti ti-copy me-2"></i> Copy</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </div>
+          <div class="card-datatable table-responsive">
+             <table class="datatables-transaction table">
+                <thead class="border-top">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Ad Id</th>
+                        <th>Ad Name</th>
+                        <th>Status</th>
+                        <th>Amount Spent</th>
+                        <th>Post Link</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% include 'portal/ads/data_list.html' %}
+                </tbody>
+             </table>
+             {% comment %} <div class="row mx-2 mt-3">
+                <div class="col-sm-12 col-md-6">
+                   <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 5 of 10 entries</div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                   <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                      <ul class="pagination">
+                         <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="ti ti-chevron-left ti-sm"></i></a></li>
+                         <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li>
+                         <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li>
+                         <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="ti ti-chevron-right ti-sm"></i></a></li>
+                      </ul>
+                   </div>
+                </div>
+             </div> {% endcomment %}
+          </div>
+       </div>
+       <!--/ Transactions Table -->
+       <script>
+          var addTransactionBtn = '' + true + '';
+          
+       </script>
+    </div>
+    <!-- / Content: End -->
+    {% include 'portal/layout/footer.html' %}
+    <div class="content-backdrop fade"></div>
+ </div>
+ {% endblock content %}
