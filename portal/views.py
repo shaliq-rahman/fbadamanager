@@ -19,6 +19,7 @@ import pandas as pd
 from django.http import HttpResponse
 import ast
 import csv
+from django.http import JsonResponse
 
 
 
@@ -41,27 +42,24 @@ class LoginView(View):
         password = request.POST.get('password', None)
 
         if not username_or_email or not password:
-            messages.error(request, "Please enter both username (or email) and password.")
-            return redirect('portal:login')  # Replace 'login' with the name of your login URL pattern
+            return JsonResponse({'success': False, 'message': "Please enter both username (or email) and password."}, status=400)
 
-        # Check if the user exists by email
         user = User.objects.filter(email=username_or_email).first()
         if user:
-            username = user.username  # Use the username for authentication
-            user = authenticate(username=username, password=password)
-
-            if user is not None:
-                if user.is_active:
-                    # Log the user in
-                    login(request, user)
-                    messages.success(request, "Login successful!")
-                    return redirect('portal:dashboard')  # Replace 'dashboard' with the name of your dashboard URL pattern
-                else:
-                    messages.error(request, "Your account is inactive. Please contact support.")
+            username = user.username  # Authenticate using username
         else:
-            messages.error(request, "Invalid username/email or password.")
+            username = username_or_email  # Assume direct username login
 
-        return redirect('portal:login')  # Replace 'login' with the name of your login URL pattern
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return JsonResponse({'success': True, 'message': "Login successful!", 'redirect_url': '/portal/dashboard/'})
+            else:
+                return JsonResponse({'success': False, 'message': "Your account is inactive. Please contact support."}, status=403)
+        else:
+            return JsonResponse({'success': False, 'message': "Invalid credentials."}, status=401)
 
 
 #CAMPAIGN

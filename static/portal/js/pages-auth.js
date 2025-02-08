@@ -1,134 +1,56 @@
-/**
- *  Pages Authentication
- * This Used in all authentication pages
- */
+document.addEventListener("DOMContentLoaded", function () {
+  const formAuthentication = document.querySelector("#formAuthentication");
+  const btnSubmit = document.getElementById("btnSubmit");
+  const btnText = document.getElementById("btnText");
+  const btnLoader = document.getElementById("btnLoader");
+  const errorContainer = document.getElementById("errorContainer");
 
-'use strict';
-const formAuthentication = document.querySelector('#formAuthentication');
-const btnSubmit = document.getElementById('btnSubmit');
-const btnText = document.getElementById('btnText');
-const btnLoader = document.getElementById('btnLoader');
-const numeralMask = document.querySelectorAll('.numeral-mask');
+  if (formAuthentication) {
+      formAuthentication.addEventListener("submit", function (event) {
+          event.preventDefault();
 
-document.addEventListener('DOMContentLoaded', function (e) {
-  (function () {
-    // Validate the form using FormValidation library
-    if (formAuthentication) {
-      const fv = FormValidation.formValidation(formAuthentication, {
-        fields: {
-          username: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter username'
-              },
-              stringLength: {
-                min: 4,
-                message: 'Username must be more than 4 characters'
-              }
-            }
-          },
-          email: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter your email'
-              },
-              emailAddress: {
-                message: 'Please enter valid email address'
-              }
-            }
-          },
-          'email-username': {
-            validators: {
-              notEmpty: {
-                message: 'Please enter email / username'
-              },
-              stringLength: {
-                min: 4,
-                message: 'Username must be more than 4 characters'
-              }
-            }
-          },
-          password: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter your password'
-              },
-              stringLength: {
-                min: 4,
-                message: 'Password must be more than 4 characters'
-              }
-            }
-          },
-          'confirm-password': {
-            validators: {
-              notEmpty: {
-                message: 'Please confirm password'
-              },
-              identical: {
-                compare: function () {
-                  return formAuthentication.querySelector('[name="password"]').value;
-                },
-                message: 'The password and its confirm are not the same'
-              },
-              stringLength: {
-                min: 4,
-                message: 'Password must be more than 4 characters'
-              }
-            }
-          },
-          terms: {
-            validators: {
-              notEmpty: {
-                message: 'Please agree terms & conditions'
-              }
-            }
-          }
-        },
-        plugins: {
-          trigger: new FormValidation.plugins.Trigger(),
-          bootstrap5: new FormValidation.plugins.Bootstrap5({
-            eleValidClass: '',
-            rowSelector: '.mb-6'
-          }),
-          submitButton: new FormValidation.plugins.SubmitButton(),
+          // Disable button and show loading state
+          btnSubmit.classList.add("disabled");
+          btnText.textContent = "Signing in...";
+          btnLoader.classList.remove("visually-hidden");
+          errorContainer.style.display = "none"; // Hide previous errors
 
-          defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-          autoFocus: new FormValidation.plugins.AutoFocus()
-        },
-        init: instance => {
-          instance.on('plugins.message.placed', function (e) {
-            if (e.element.parentElement.classList.contains('input-group')) {
-              e.element.parentElement.insertAdjacentElement('afterend', e.messageElement);
-            }
-          });
-        }
+          const formData = new FormData(formAuthentication);
+
+          fetch(formAuthentication.action, {
+              method: "POST",
+              body: formData,
+              headers: {
+                  "X-Requested-With": "XMLHttpRequest",
+              },
+          })
+              .then((response) => response.json())
+              .then((data) => {
+                  if (data.success) {
+                      window.location.href = data.redirect_url;
+                  } else {
+                      showError(data.message);
+                      resetButton();
+                  }
+              })
+              .catch(() => {
+                  showError("Something went wrong. Please try again.");
+                  resetButton();
+              });
       });
 
-      if (btnSubmit && btnText && btnLoader) {
-        // Show loading state on form submission
-        btnSubmit.addEventListener('click', function (event) {
-          event.preventDefault(); // Prevent default form submission
-
-          // Check if the form is valid
-          fv.validate().then(function (status) {
-            if (status === 'Valid') {
-              // If the form is valid, show loading state
-              btnSubmit.classList.add('disabled');
-              btnText.textContent = 'Sending email... ';
-              btnLoader.classList.remove('visually-hidden');
-            }
-          });
-        });
+      function showError(message) {
+          errorContainer.textContent = message;
+          errorContainer.style.display = "block";
+          setTimeout(() => {
+              errorContainer.style.display = "none";
+          }, 3000); // Hide after 3 seconds
       }
-    }
 
-    // Verification masking for numeral input
-    if (numeralMask.length) {
-      numeralMask.forEach(e => {
-        new Cleave(e, {
-          numeral: true
-        });
-      });
-    }
-  })();
+      function resetButton() {
+          btnSubmit.classList.remove("disabled");
+          btnText.textContent = "Sign In";
+          btnLoader.classList.add("visually-hidden");
+      }
+  }
 });
