@@ -2,13 +2,13 @@
 {% load static %}
 <html lang="en" class="light-style layout-navbar-fixed  layout-menu-fixed   customizer-hide layout-wide" dir="ltr" data-theme="theme-default" data-assets-path="" data-base-url="" data-framework="django" data-template="vertical-menu--theme-default-light">
    <head>
-      <title>Login - Pages | Vuexy - Django Admin Template</title>
+      <title>Login - Pages | AdManager - Django Admin Template</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-      <meta name="description" content="Vuexy is a modern, clean and fully responsive admin template built with Bootstrap 5, Django, HTML, CSS, jQuery, and JavaScript. It has a huge collection of reusable UI components and integrated with the latest jQuery plugins. It can be used for all types of web applications like custom admin panel, project management system, admin dashboard, Backend application or CRM." />
+      <meta name="description" content="AdManager is a modern, clean and fully responsive admin template built with Bootstrap 5, Django, HTML, CSS, jQuery, and JavaScript. It has a huge collection of reusable UI components and integrated with the latest jQuery plugins. It can be used for all types of web applications like custom admin panel, project management system, admin dashboard, Backend application or CRM." />
       <meta name="keywords" content="django, django admin, dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
       <!-- Canonical SEO -->
-      <link rel="canonical" href="https://1.envato.market/vuexy_admin">
+      <link rel="canonical" href="https://1.envato.market/AdManager_admin">
       <!-- Favicon -->
       <link rel="shortcut icon" type="image/x-icon" href="{% static 'portal/img/favicon/favicon.ico" />
       <!-- Include the styles partial -->
@@ -87,7 +87,7 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z" fill="#7367F0" />
                </svg>
             </span>
-            <span class="app-brand-text demo text-heading fw-bold">Vuexy</span>
+            <span class="app-brand-text demo text-heading fw-bold">AdManager</span>
          </a>
          <!-- /Logo -->
          <div class="authentication-inner row m-0">
@@ -103,17 +103,8 @@
             <!-- Login -->
             <div class="d-flex col-12 col-lg-4 align-items-center authentication-bg p-sm-12 p-6">
                <div class="w-px-400 mx-auto mt-12 pt-5">
-                  <h4 class="mb-1">Welcome to Vuexy! 👋</h4>
+                  <h4 class="mb-1">Welcome to AdManager! 👋</h4>
                   <p class="mb-6">Please sign-in to your account and start the adventure</p>
-                  <div class="alert alert-primary small">
-                     <p class="text-caption mb-1"> Admin Email: <strong>admin@demo.com</strong> / Username: <strong>admin</strong>
-                        <span class="cursor-pointer" id="admin-user"><i class="ti ti-help ti-xs text-body mb-1" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" title="Admin User" data-bs-content="Can access User, Roles, and Permissions pages. Possesses permissions to View, Update, Delete, and Create transactions on the Transaction Page."></i></span>
-                     </p>
-                     <p class="text-caption mb-1"> Client Email: <strong>client@demo.com</strong> / Username: <strong>client</strong>
-                        <span class="cursor-pointer" id="client-user"><i class="ti ti-help ti-xs text-body mb-1" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" title="Client User" data-bs-content="Unable to access User, Roles, and Permissions pages. Limited to viewing the Transaction page exclusively."></i></span>
-                     </p>
-                     <p class="text-caption mb-0">Password: <strong>Pwd_1234</strong></p>
-                  </div>
 
                   <form id="formAuthentication" class="mb-6" action="/login/" method="post">
                      {% csrf_token %}
@@ -129,7 +120,7 @@
                            <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
                         </div>
                      </div>
-                     <div class="my-8">
+                     {% comment %} <div class="my-8">
                         <div class="d-flex justify-content-between">
                            <div class="form-check mb-0 ms-2">
                               <input class="form-check-input" type="checkbox" id="remember-me">
@@ -137,20 +128,31 @@
                               Remember Me
                               </label>
                            </div>
-                           <a href="/forgot_password/">
+                           {% comment %} <a href="/forgot_password/">
                               <p class="mb-0">Forgot Password?</p>
-                           </a>
+                           </a> 
                         </div>
-                     </div>
-                     <input type="hidden" name="next" value="/pages/account_settings/account/">
-                     <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                     </div> {% endcomment %}
+                     {% comment %} <input type="hidden" name="next" value="/pages/account_settings/account/" /> {% endcomment %}
+
+                     <button id="btnSubmit" class="btn btn-primary d-grid w-100" type="submit">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span id="btnLoader" class="spinner-border spinner-border-sm visually-hidden" role="status"></span>
+                            <span id="btnText">Sign In</span>
+                        </div>
+                    </button>
+                    
+
+                     <div id="errorContainer" class="alert alert-danger mt-2" style="display: none;"></div>
+
+
                   </form>
-                  <p class="text-center">
+                  {% comment %} <p class="text-center">
                      <span>New on our platform?</span>
                      <a href="/register/">
                      <span>Create an account</span>
                      </a>
-                  </p>
+                  </p> {% endcomment %}
                </div>
             </div>
             <!-- /Login -->

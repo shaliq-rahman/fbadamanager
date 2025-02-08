@@ -11,7 +11,7 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z" fill="#7367F0" />
              </svg>
           </span>
-          <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
+          <span class="app-brand-text demo menu-text fw-bold">AdManager</span>
        </a>
        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
        <i class="ti menu-toggle-icon d-none d-xl-block align-middle"></i>
@@ -20,27 +20,27 @@
     </div>
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
-        <li class="menu-item active">
+        <li class="menu-item {% if 'dashboard' in request.path %}active{% endif %}">
             <a href="{% url 'portal:dashboard' %}" class="menu-link" >
                <i class="menu-icon tf-icons ti ti-smart-home"></i>
                <div>Dashboard</div>
             </a>
         </li>
-       <li class="menu-item ">
+       {% comment %} <li class="menu-item ">
           <a href="{% url 'portal:campaigns' %}" class="menu-link" >
              <i class="menu-icon tf-icons ti ti-database"></i>
              <div>Campaigns</div>
           </a>
-       </li>
+       </li> {% endcomment %}
 
-       <li class="menu-item ">
+       <li class="menu-item {% if 'ads' in request.path %}active{% endif %} ">
          <a href="{% url 'portal:campaign_ads' %}" class="menu-link" >
             <i class="menu-icon tf-icons ti ti-database"></i>
             <div>Ads</div>
          </a>
       </li>
 
-       <li class="menu-item active open">
+       {% comment %} <li class="menu-item active open">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ti ti-smart-home"></i>
             <div>Account</div>
@@ -60,6 +60,6 @@
                </a>
             </li>
          </ul>
-      </li>
+      </li> {% endcomment %}
     </ul>
  </aside>

@@ -9,7 +9,7 @@ urlpatterns = [
     # path('data-edit/', data_edit, name="data_edit"),
     # path('profile-update/', profile_update, name="profile_update"),
     
-    path('', DashboardView.as_view(), name="dashboard"),
+    path('dashboard/', DashboardView.as_view(), name="dashboard"),
     path('login/', LoginView.as_view(), name="login"),
     path('campaigns/', CampaignsView.as_view(), name="campaigns"),
     path('campaigns/<str:cmpid>/adsets/', CampaignsAdSetsView.as_view(), name="campaigns_adsets"),
@@ -19,4 +19,7 @@ urlpatterns = [
     
     path('ads/', CampaignsAdsView.as_view(), name="campaign_ads"),
     path('ads/<str:adid>/', CampaignsAdsDetailView.as_view(), name="campaign_ads_detail"),
+    
+    path('download-excel/', download_excel, name='download_excel'),
+    path('fetch-latest-ads/', fetch_latest_ads, name='fetch_latest_ads'),
 ]

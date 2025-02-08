@@ -2,13 +2,13 @@
 {% load static %}
 <html lang="en" class="light-style layout-navbar-fixed  layout-menu-fixed    layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="" data-base-url="" data-framework="django" data-template="vertical-menu--theme-default-light">
    <head>
-      <title>Dashboard - Analytics | Vuexy - Django Admin Template</title>
+      <title>Dashboard - Analytics | AdManager - Django Admin Template</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-      <meta name="description" content="Vuexy is a modern, clean and fully responsive admin template built with Bootstrap 5, Django, HTML, CSS, jQuery, and JavaScript. It has a huge collection of reusable UI components and integrated with the latest jQuery plugins. It can be used for all types of web applications like custom admin panel, project management system, admin dashboard, Backend application or CRM." />
+      <meta name="description" content="AdManager is a modern, clean and fully responsive admin template built with Bootstrap 5, Django, HTML, CSS, jQuery, and JavaScript. It has a huge collection of reusable UI components and integrated with the latest jQuery plugins. It can be used for all types of web applications like custom admin panel, project management system, admin dashboard, Backend application or CRM." />
       <meta name="keywords" content="django, django admin, dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
       <!-- Canonical SEO -->
-      <link rel="canonical" href="https://1.envato.market/vuexy_admin">
+      <link rel="canonical" href="https://1.envato.market/AdManager_admin">
       <!-- Favicon -->
       <link rel="shortcut icon" type="image/x-icon" href="{% static 'portal/img/favicon/favicon.ico" />
       <!-- Include the styles partial -->
@@ -120,5 +120,11 @@
       <script src="{% static 'portal/vendor/libs/datatables-bs5/datatables-bootstrap5.js' %}"></script>
       <!--Page Javascript-->
       <script src="{% static 'portal/js/dashboards-analytics.js' %}"></script>
+
+      
+      {% block page_script %}
+         
+      {% endblock page_script %}
+         
    </body>
 </html>
