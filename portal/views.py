@@ -17,6 +17,7 @@ import pdb
 # from .helper_functions.ads import *
 import pandas as pd
 from django.http import HttpResponse
+import ast
 import csv
 
 
@@ -284,6 +285,15 @@ class CampaignsAdsDetailView(LoginRequiredMixin, View):
     
     
 from io import BytesIO
+def extract_link_ctr(value):
+    """Extract 'link_click' value from the list of action metrics or return 'N/A'."""
+    if value != "N/A":
+        actual_list = ast.literal_eval(value)
+        value =  actual_list[0]['value']
+        return value
+    else:
+        return 'N/A'
+
 def download_excel(request):
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
@@ -334,12 +344,15 @@ def download_excel(request):
             'creative_link': 'Creative Link',
         }, inplace=True)
 
-    # **Fix potential formatting issues**
+        # Apply function to extract 'Link CTR' values
+        if 'Link CTR' in df.columns:
+            df['Link CTR'] = df['Link CTR'].apply(extract_link_ctr)
+
+    # Fix potential formatting issues
     df = df.fillna('')  # Replace NaN/None values with empty strings
     df = df.astype(str)  # Convert all values to string format
 
     output = BytesIO()
-    
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         df.to_excel(writer, sheet_name='Ad Metrics', index=False)
         workbook = writer.book

@@ -14,25 +14,26 @@
         <div class="card-header">
             <h5 class="card-title">Adsets Lists</h5>
             <div class="d-flex align-items-center row ">
-              <div class="col-md-2 product_stock"><input type="search" class="form-control" placeholder="Search Product" aria-controls="DataTables_Table_0"></div>
+              <div class="col-md-2 product_stock"><input type="search" class="form-control" placeholder="Search Ad" aria-controls="DataTables_Table_0"></div>
               {% comment %} <div class="col-md-2 product_status"><select id="ProductStatus" class="form-select text-capitalize"><option value="">Status</option><option value="Scheduled">Scheduled</option><option value="Publish">Publish</option><option value="Inactive">Inactive</option></select></div>
               <div class="col-md-2 product_category"><select id="ProductCategory" class="form-select text-capitalize"><option value="">Category</option><option value="Household">Household</option><option value="Office">Office</option><option value="Electronics">Electronics</option><option value="Shoes">Shoes</option><option value="Accessories">Accessories</option><option value="Game">Game</option></select></div>
               <div class="col-md-2 product_stock"><select id="ProductStock" class="form-select text-capitalize"><option value=""> Stock </option><option value="Out_of_Stock">Out of Stock</option><option value="In_Stock">In Stock</option></select></div> {% endcomment %}
               <div class="col-md-2 product_stock">
                   <div class="btn-group">
-                      <button class="btn btn-secondary  btn-label-secondary waves-effect waves-light" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button id="download-btn" onclick="downloadExcel()" class="btn btn-secondary  btn-label-secondary waves-effect waves-light" type="button"  >
                           <i class="ti ti-upload me-1 ti-xs"></i> Export
                       </button>
+                      <span id="loader" style="display:none;">🔄 Downloading...</span>
                       
                   </div>
               </div>
 
-              <div class="col-md-2 product_stock">
+              {% comment %} <div class="col-md-2 product_stock">
                   <div class="btn-group">
                      <button id="download-btn" onclick="downloadExcel()">Download Excel</button>
                      <span id="loader" style="display:none;">🔄 Downloading...</span>
                   </div>
-               </div>
+               </div> {% endcomment %}
           </div>
         </div>
           <div class="card-datatable table-responsive">
