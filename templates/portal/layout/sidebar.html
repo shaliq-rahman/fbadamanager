@@ -20,27 +20,27 @@
     </div>
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{% url 'portal:dashboard' %}" class="menu-link" >
                <i class="menu-icon tf-icons ti ti-smart-home"></i>
                <div>Dashboard</div>
             </a>
         </li>
-       <li class="menu-item ">
+       {% comment %} <li class="menu-item ">
           <a href="{% url 'portal:campaigns' %}" class="menu-link" >
              <i class="menu-icon tf-icons ti ti-database"></i>
              <div>Campaigns</div>
           </a>
-       </li>
+       </li> {% endcomment %}
 
-       <li class="menu-item ">
+       <li class="menu-item {% if 'ads' in request.path %}active{% endif %} ">
          <a href="{% url 'portal:campaign_ads' %}" class="menu-link" >
             <i class="menu-icon tf-icons ti ti-database"></i>
             <div>Ads</div>
          </a>
       </li>
 
-       <li class="menu-item active open">
+       {% comment %} <li class="menu-item active open">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ti ti-smart-home"></i>
             <div>Account</div>
@@ -60,6 +60,6 @@
                </a>
             </li>
          </ul>
-      </li>
+      </li> {% endcomment %}
     </ul>
  </aside>

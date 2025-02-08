@@ -19,4 +19,6 @@ urlpatterns = [
     
     path('ads/', CampaignsAdsView.as_view(), name="campaign_ads"),
     path('ads/<str:adid>/', CampaignsAdsDetailView.as_view(), name="campaign_ads_detail"),
+    
+    path('download-excel/', download_excel, name='download_excel'),
 ]

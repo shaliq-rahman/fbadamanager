@@ -15,6 +15,9 @@ from django.contrib.auth import login  # This imports the correct function
 from .helper_functions.campaigns import get_all_campaigns, get_ad_sets_by_campaign, get_ads_by_adset
 import pdb
 # from .helper_functions.ads import *
+import pandas as pd
+from django.http import HttpResponse
+import csv
 
 
 
@@ -278,3 +281,75 @@ class CampaignsAdsDetailView(LoginRequiredMixin, View):
             'ad_data': ad_data,
         }
         return renderhelper(request, "portal", "ads", template_name="detail.html", context=data)
+    
+    
+from io import BytesIO
+def download_excel(request):
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    filter_conditions = {}
+
+    if start_date and end_date:
+        filter_conditions['created_at__date__range'] = (start_date, end_date)
+
+    metrics = fbAdMetrics.objects.filter(**filter_conditions).values()
+    df = pd.DataFrame(list(metrics))
+
+    if df.empty:
+        df = pd.DataFrame(columns=[
+            "S.No", "Ad ID", "Period Start", "Period End", "Campaign Name", "Campaign Objective",
+            "Ad Set Name", "Ad Name", "Status", "Bid Strategy", "Daily Budget", "Results",
+            "Cost Per Result", "Amount Spent", "Return on Ad Spend", "Hook Rate", "Hold Rate",
+            "CPM", "Link CTR", "Link CPC", "Link Clicks", "Landing Page Views",
+            "Checkouts Initiated", "Add to Carts", "Add Payment Info", "Creative Link",
+        ])
+    else:
+        df.insert(0, 'S.No', range(1, len(df) + 1))
+
+        df.rename(columns={
+            'ad_id': 'Ad ID',
+            'period_start': 'Period Start',
+            'period_end': 'Period End',
+            'campaign_name': 'Campaign Name',
+            'campaign_objective': 'Campaign Objective',
+            'adset_name': 'Ad Set Name',
+            'ad_name': 'Ad Name',
+            'status': 'Status',
+            'bid_strategy': 'Bid Strategy',
+            'daily_budget': 'Daily Budget',
+            'results': 'Results',
+            'cost_per_result': 'Cost Per Result',
+            'amount_spent': 'Amount Spent',
+            'return_on_ad_spend': 'Return on Ad Spend',
+            'hook_rate': 'Hook Rate',
+            'hold_rate': 'Hold Rate',
+            'cpm': 'CPM',
+            'link_ctr': 'Link CTR',
+            'link_cpc': 'Link CPC',
+            'link_clicks': 'Link Clicks',
+            'landing_page_views': 'Landing Page Views',
+            'checkouts_initiated': 'Checkouts Initiated',
+            'add_to_carts': 'Add to Carts',
+            'add_payment_info': 'Add Payment Info',
+            'creative_link': 'Creative Link',
+        }, inplace=True)
+
+    # **Fix potential formatting issues**
+    df = df.fillna('')  # Replace NaN/None values with empty strings
+    df = df.astype(str)  # Convert all values to string format
+
+    output = BytesIO()
+    
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, sheet_name='Ad Metrics', index=False)
+        workbook = writer.book
+        worksheet = writer.sheets['Ad Metrics']
+        for col_num, value in enumerate(df.columns.values):
+            max_len = max(df[value].astype(str).map(len).max(), len(value)) + 2
+            worksheet.set_column(col_num, col_num, max_len)
+
+    output.seek(0)
+    response = HttpResponse(output.getvalue(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="fb_ad_metrics.xlsx"'
+    
+    return response
