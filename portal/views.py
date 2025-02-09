@@ -58,7 +58,7 @@ class LoginView(View):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return JsonResponse({'success': True, 'message': "Login successful!", 'redirect_url': '/dashboard/'})
+                return JsonResponse({'success': True, 'message': "Login successful!", 'redirect_url': '/'})
             else:
                 return JsonResponse({'success': False, 'message': "Your account is inactive. Please contact support."}, status=403)
         else:
