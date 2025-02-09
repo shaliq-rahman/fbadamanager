@@ -7,6 +7,8 @@ app_secret = 'aa0eaaede118604c29332769e4910c77'
 access_token = 'EAAPZBhVe4hEEBOZBVkzCVmyX58kmPWZC18JZB3rFttxCWwrAIcicFBHZBI0Qd1iJh6fJwlGjuQQQS6jAF7ZBlSsSPLpj1aFx0VQX1MDtvXDftZAvSEe0ofE0Eh6oaeEUvuZA48VBJZAkBOASPck6TdGGZBCDUcQsllAyoZCLIi128HMfzVZCWo84S9r0HRCQ5gPHh1dS'
 ad_account_id = 'act_978087683481395'  # Note the "act_" prefix
 
+import pdb
+
 def fetch_facebook_ad_metrics():
     """Fetch ad metrics from Facebook and update the database."""
     
@@ -38,8 +40,8 @@ def fetch_facebook_ad_metrics():
             'bid_strategy': adset.get('bid_strategy', 'N/A'),
             'ad_name': ad.get('name', 'N/A'),
             'status': ad.get('status', 'N/A'),
-            'creative_link': creative.get('video_id', f"https://www.facebook.com/video.php?v={creative.get('video_id')}") 
-                            if creative.get('video_id') else creative.get('image_url', 'N/A')
+            'creative_link': f"https://www.facebook.com/video.php?v={creative['video_id']}" 
+                if 'video_id' in creative else creative.get('image_url', 'N/A')
         }
     
     # Fetch insights metrics

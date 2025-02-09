@@ -5,7 +5,7 @@
     <td>{{ ad.ad_name }}</td>
     <td>{{ ad.status }}</td>
     <td>{{ ad.amount_spent }}</td>
-    <td class="sorting_1"><a href="{{ad.creative_link}}"><i class="fa-solid fa-link"></i></a></td>
+    <td class="sorting_1"><a href="{{ad.creative_link}}" target="_blank"><i class="fa-solid fa-link"></i></a></td>
     <td>
         <div class="d-flex align-items-center">
             <a href="{% url 'portal:campaign_ads_detail' ad.ad_id  %}" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill" data-bs-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview">
