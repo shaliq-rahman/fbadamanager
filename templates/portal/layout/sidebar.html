@@ -20,7 +20,7 @@
     </div>
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
-        <li class="menu-item {% if 'dashboard' in request.path %}active{% endif %}">
+        <li class="menu-item {% if 'ads' not in request.path %}active{% endif %}">
             <a href="{% url 'portal:dashboard' %}" class="menu-link" >
                <i class="menu-icon tf-icons ti ti-smart-home"></i>
                <div>Dashboard</div>

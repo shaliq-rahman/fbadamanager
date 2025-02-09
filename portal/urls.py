@@ -9,7 +9,7 @@ urlpatterns = [
     # path('data-edit/', data_edit, name="data_edit"),
     # path('profile-update/', profile_update, name="profile_update"),
     
-    path('dashboard/', DashboardView.as_view(), name="dashboard"),
+    path('', DashboardView.as_view(), name="dashboard"),
     path('login/', LoginView.as_view(), name="login"),
     path('campaigns/', CampaignsView.as_view(), name="campaigns"),
     path('campaigns/<str:cmpid>/adsets/', CampaignsAdSetsView.as_view(), name="campaigns_adsets"),
