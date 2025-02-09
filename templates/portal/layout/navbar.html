@@ -418,13 +418,14 @@
                    </span>
                 </li> {% endcomment %}
                 <li class="mt-1">
-                   <form action="/logout/" method="post">
-                      <input type="hidden" name="csrfmiddlewaretoken" value="kSn3MFPuUCvDrqyffnktZOdPgLDdNxcP9Ec0MRJLwrji3J9u5R8NB7QCrp0TTS6x">
+                   {% comment %} <form> {% endcomment %}
+                      <a href="{% url 'portal:logout' %}">
                       <button type="submit" class="btn btn-sm btn-danger d-flex w-100">
                       <span class="align-middle">Log Out</span>
                       <i class="ti ti-logout ms-2 ti-14px"></i>
                       </button>
-                   </form>
+                     </a>
+                   {% comment %} </form> {% endcomment %}
                 </li>
              </ul>
           </li>

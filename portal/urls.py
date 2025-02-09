@@ -11,6 +11,7 @@ urlpatterns = [
     
     path('', DashboardView.as_view(), name="dashboard"),
     path('login/', LoginView.as_view(), name="login"),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('campaigns/', CampaignsView.as_view(), name="campaigns"),
     path('campaigns/<str:cmpid>/adsets/', CampaignsAdSetsView.as_view(), name="campaigns_adsets"),
     path('campaigns/adsets/<str:adsetid>/ads/', AdView.as_view(), name="campaigns_adsets_ads"),
