@@ -23,15 +23,49 @@ from django.http import JsonResponse
 from .helper_functions.fbads import fetch_facebook_ad_metrics
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
-
+from django.db.models import Sum, Avg
 
 
 #DASHBOARD
 class DashboardView(LoginRequiredMixin, View):
-    login_url = '/login/'
-    
+    login_url = "/login/"
+
     def get(self, request, *args, **kwargs):
-        data = {}
+        # Aggregate metrics
+        metrics = fbAdMetrics.objects.aggregate(
+            total_spent=Sum("amount_spent"),
+            total_results=Sum("results"),
+            avg_cpr=Avg("cost_per_result"),
+            total_clicks=Sum("link_clicks"),
+            total_atc=Sum("add_to_carts"),
+            total_lpv=Sum("landing_page_views"),
+            total_checkouts=Sum("checkouts_initiated"),
+            avg_cpm=Avg("cpm"),
+            total_cpm=Sum("cpm"),
+            total_link_ctr=Sum("link_ctr"),
+            total_link_cpc=Sum("link_cpc"),
+            total_link_clicks=Sum("link_clicks"),
+        )
+
+        active_ads = fbAdMetrics.objects.filter(status="ACTIVE").count()
+
+        # Preparing context data with rounded values
+        data = {
+            "total_ads": fbAdMetrics.objects.count(),
+            "total_amount_spent": round(metrics["total_spent"] or 0, 3),
+            "total_results": round(metrics["total_results"] or 0, 3),
+            "average_cost_per_result": round(metrics["avg_cpr"] or 0, 3),
+            "total_link_clicks": round(metrics["total_link_clicks"] or 0, 3),
+            "total_add_to_carts": round(metrics["total_atc"] or 0, 3),
+            "total_landing_page_views": round(metrics["total_lpv"] or 0, 3),
+            "total_checkouts_initiated": round(metrics["total_checkouts"] or 0, 3),
+            "average_cpm": round(metrics["avg_cpm"] or 0, 3),
+            "total_cpm": round(metrics["total_cpm"] or 0, 3),
+            "total_link_ctr": round(metrics["total_link_ctr"] or 0, 3),
+            "total_link_cpc": round(metrics["total_link_cpc"] or 0, 3),
+            "active_ads": active_ads,
+        }
+
         return renderhelper(request, "portal", "dashboard", template_name="index.html", context=data)
     
 #LOGIN
