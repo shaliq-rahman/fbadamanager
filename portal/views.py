@@ -21,6 +21,8 @@ import ast
 import csv
 from django.http import JsonResponse
 from .helper_functions.fbads import fetch_facebook_ad_metrics
+from django.contrib.auth import login, authenticate, logout
+from django.urls import reverse
 
 
 
@@ -61,6 +63,13 @@ class LoginView(View):
                 return JsonResponse({'success': False, 'message': "Your account is inactive. Please contact support."}, status=403)
         else:
             return JsonResponse({'success': False, 'message': "Invalid credentials."}, status=401)
+        
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        logout(request)
+        request.session.flush()
+        return redirect(reverse('portal:login'))
 
 
 #CAMPAIGN
