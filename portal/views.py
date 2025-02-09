@@ -47,7 +47,7 @@ class DashboardView(LoginRequiredMixin, View):
             total_link_clicks=Sum("link_clicks"),
         )
 
-        active_ads = fbAdMetrics.objects.filter(status="ACTIVE").count()
+        active_ads = fbAdMetrics.objects.count()
 
         # Preparing context data with rounded values
         data = {
